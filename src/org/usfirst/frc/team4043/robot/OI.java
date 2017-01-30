@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team4043.robot.commands.ExampleCommand;
+import org.usfirst.frc.team4043.robot.commands.WinchReverse;
 import org.usfirst.frc.team4043.robot.commands.WinchStart;
 
 /**
@@ -42,9 +43,11 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	Joystick driveStick = new Joystick(0);
 	Button winchButton = new JoystickButton(driveStick, 6);
+	Button reverseWinch = new JoystickButton(driveStick, 5);
 	
 	public OI() {
 		winchButton.whenPressed(new WinchStart());
+		reverseWinch.whenPressed(new WinchReverse());
 	}
 	
 	public Joystick getDriveStick() {
