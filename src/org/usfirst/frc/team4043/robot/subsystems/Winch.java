@@ -18,6 +18,11 @@ public class Winch extends Subsystem {
 		//RobotMap.winch1.set(-0.5f);
 		//RobotMap.winch2.set(-0.5f);
 	}
+	
+	public void stop() {
+		RobotMap.winch1.set(0);
+		RobotMap.winch2.set(0);
+    }
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

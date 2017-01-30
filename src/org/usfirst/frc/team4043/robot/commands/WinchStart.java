@@ -12,11 +12,12 @@ public class WinchStart extends Command {
     public WinchStart() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.winch)
+    	requires(Robot.winch);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.winch.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -30,6 +31,7 @@ public class WinchStart extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.winch.stop();
     }
 
     // Called when another command which requires one or more of the same

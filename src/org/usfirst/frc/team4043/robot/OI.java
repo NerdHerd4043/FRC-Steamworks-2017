@@ -2,8 +2,10 @@ package org.usfirst.frc.team4043.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team4043.robot.commands.ExampleCommand;
+import org.usfirst.frc.team4043.robot.commands.WinchStart;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -39,6 +41,11 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	Joystick driveStick = new Joystick(0);
+	Button winchButton = new JoystickButton(driveStick, 6);
+	
+	public OI() {
+		winchButton.whenPressed(new WinchStart());
+	}
 	
 	public Joystick getDriveStick() {
         return driveStick;
