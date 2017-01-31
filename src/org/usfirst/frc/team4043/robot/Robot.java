@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4043.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4043.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4043.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team4043.robot.subsystems.GrabberNabber;
 import org.usfirst.frc.team4043.robot.subsystems.Winch;
 
 /**
@@ -27,6 +28,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static DriveTrain drivetrain;
 	public static Winch winch;
+	public static GrabberNabber grabberNabber;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -42,6 +44,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto mode", chooser);
 		drivetrain = new DriveTrain();
 		winch = new Winch();
+		grabberNabber = new GrabberNabber();
 		oi = new OI();
 
 	}
