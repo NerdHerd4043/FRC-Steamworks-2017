@@ -37,12 +37,13 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		oi = new OI();
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		drivetrain = new DriveTrain();
 		winch = new Winch();
+		oi = new OI();
+
 	}
 
 	/**

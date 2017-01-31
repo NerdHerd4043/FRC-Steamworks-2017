@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team4043.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4043.robot.commands.WinchReverse;
 import org.usfirst.frc.team4043.robot.commands.WinchStart;
+import org.usfirst.frc.team4043.robot.commands.WinchStop;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -44,10 +45,12 @@ public class OI {
 	Joystick driveStick = new Joystick(0);
 	Button winchButton = new JoystickButton(driveStick, 6);
 	Button reverseWinch = new JoystickButton(driveStick, 5);
+	Button winchStop = new JoystickButton(driveStick, 4);
 	
 	public OI() {
 		winchButton.whenPressed(new WinchStart());
 		reverseWinch.whenPressed(new WinchReverse());
+		winchStop.whenPressed(new WinchStop());
 	}
 	
 	public Joystick getDriveStick() {
