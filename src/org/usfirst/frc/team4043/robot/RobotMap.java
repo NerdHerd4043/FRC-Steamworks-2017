@@ -20,22 +20,22 @@ public class RobotMap {
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
-	public static CANTalon motorFR = new CANTalon(1);
+	public static CANTalon motorFR = new CANTalon(4);
 	public static CANTalon motorFL = new CANTalon(2);
 	public static CANTalon motorBR = new CANTalon(3);
-	public static CANTalon motorBL = new CANTalon(4);
+	public static CANTalon motorBL = new CANTalon(1);
 	
 	public static CANTalon winch1 = new CANTalon(5);
 	public static CANTalon winch2 = new CANTalon(6);
 	
 	public static void init() {
-		LiveWindow.addActuator("DriveTrain", "CAN Talon 1", motorFR);
+		LiveWindow.addActuator("DriveTrain", "CAN Talon 4", motorFR);
 		
 		LiveWindow.addActuator("DriveTrain", "CAN Talon 2", motorFL);
 		
 		LiveWindow.addActuator("DriveTrain", "CAN Talon 3", motorBR);
 		
-		LiveWindow.addActuator("DriveTrain", "CAN Talon 4", motorBL);
+		LiveWindow.addActuator("DriveTrain", "CAN Talon 1", motorBL);
 		
 		LiveWindow.addActuator("Winch", "CAN Talon 5", winch1);
 		
