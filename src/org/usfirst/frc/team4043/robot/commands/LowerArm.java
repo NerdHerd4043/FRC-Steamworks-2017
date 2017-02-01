@@ -17,6 +17,7 @@ public class LowerArm extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	System.out.println("LowerArm");
     	Robot.grabberNabber.LowerArm();
     }
 
@@ -27,12 +28,12 @@ public class LowerArm extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	Robot.grabberNabber.StopArm();
         return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.grabberNabber.StopArm();
     }
 
     // Called when another command which requires one or more of the same

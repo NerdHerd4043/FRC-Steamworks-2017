@@ -44,5 +44,9 @@ public class RobotMap {
 		
 		LiveWindow.addActuator("Winch", "CAN Talon 6", winch2);
 		
+		LiveWindow.addActuator("Arm", "CAN Talon 7", GrabberArm);
+	
+		LiveWindow.addActuator("Claw", "CAN Talon 8", GrabberClaw);
+
 	}
 }
