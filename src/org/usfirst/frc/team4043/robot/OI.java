@@ -48,8 +48,8 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	Joystick driveStick = new Joystick(0);
 	Joystick coStick = new Joystick(1);
-	Button winchButton = new JoystickButton(driveStick, 6);
-	Button reverseWinch = new JoystickButton(driveStick, 5);
+	Button winchButton = new JoystickButton(driveStick, 5);
+	Button reverseWinch = new JoystickButton(driveStick, 6);
 	//Button winchStop = new JoystickButton(driveStick, 4);
 	
 	Button raiseArm = new JoystickButton(driveStick, 4);
