@@ -9,6 +9,8 @@ import org.usfirst.frc.team4043.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4043.robot.commands.LowerArm;
 import org.usfirst.frc.team4043.robot.commands.OpenClaw;
 import org.usfirst.frc.team4043.robot.commands.RaiseArm;
+import org.usfirst.frc.team4043.robot.commands.StopArm;
+import org.usfirst.frc.team4043.robot.commands.StopClaw;
 import org.usfirst.frc.team4043.robot.commands.WinchReverse;
 import org.usfirst.frc.team4043.robot.commands.WinchStart;
 import org.usfirst.frc.team4043.robot.commands.WinchStop;
@@ -50,7 +52,7 @@ public class OI {
 	Joystick coStick = new Joystick(1);
 	Button winchButton = new JoystickButton(driveStick, 5);
 	Button reverseWinch = new JoystickButton(driveStick, 6);
-	//Button winchStop = new JoystickButton(driveStick, 4);
+	Button winchStop = new JoystickButton(coStick, 5);
 	
 	Button raiseArm = new JoystickButton(driveStick, 4);
 	Button lowerArm = new JoystickButton(driveStick, 2);
@@ -61,12 +63,17 @@ public class OI {
 	public OI() {
 		winchButton.whenPressed(new WinchStart());
 		reverseWinch.whenPressed(new WinchReverse());
-		//winchStop.whenPressed(new WinchStop());
+		winchStop.whenPressed(new WinchStop());
 		
-		raiseArm.whileHeld(new RaiseArm());
-		lowerArm.whileHeld(new LowerArm());
-		openClaw.whileHeld(new OpenClaw());
-		closeClaw.whileHeld(new CloseClaw());
+		raiseArm.whenPressed(new RaiseArm());
+		raiseArm.whenReleased(new StopArm());
+		lowerArm.whenPressed(new LowerArm());
+		lowerArm.whenReleased(new StopArm());
+		openClaw.whenPressed(new OpenClaw());
+		openClaw.whenReleased(new StopClaw());
+		closeClaw.whenPressed(new CloseClaw());
+		closeClaw.whenReleased(new StopClaw());
+		
 	}
 	
 	public Joystick getDriveStick() {
