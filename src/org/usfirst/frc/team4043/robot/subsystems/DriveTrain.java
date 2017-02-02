@@ -25,7 +25,8 @@ public class DriveTrain extends Subsystem {
 	public ADXRS450_Gyro gyroSPI;
 	public DriveTrain() {
 		super();
-		drive = new RobotDrive(RobotMap.motorFR, RobotMap.motorFL, RobotMap.motorBR, RobotMap.motorBL);
+		//TODO: Double check this, are the motors going in the correct spots? Hover over drive base to see where they should go.
+		drive = new RobotDrive(RobotMap.motorFR, RobotMap.motorFL, RobotMap.motorBR, RobotMap.motorBL); 
 	}
 
     // Put methods for controlling this subsystem
@@ -57,7 +58,9 @@ public class DriveTrain extends Subsystem {
 		}
 		inputSpeed = joy.getRawAxis(1);
 		inputTurn = joy.getRawAxis(4);
-		if (inputSpeed < maxSpeed) {
+		
+		//TODO: DOUBLE CHECK THIS SECTION, perhaps remove the limits completely for now.
+		if (inputSpeed < maxSpeed) {  
 			inputSpeed = maxSpeed;
 		}
 		
