@@ -26,7 +26,8 @@ public class DriveTrain extends Subsystem {
 	public DriveTrain() {
 		super();
 		//TODO: Double check this, are the motors going in the correct spots? Hover over drive base to see where they should go.
-		drive = new RobotDrive(RobotMap.motorFR, RobotMap.motorFL, RobotMap.motorBR, RobotMap.motorBL); 
+		//Changed 2-2-2017
+		drive = new RobotDrive(RobotMap.motorBL, RobotMap.motorFL, RobotMap.motorBR, RobotMap.motorFR); 
 	}
 
     // Put methods for controlling this subsystem
