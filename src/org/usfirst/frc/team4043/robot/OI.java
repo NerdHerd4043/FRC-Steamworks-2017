@@ -63,7 +63,7 @@ public class OI {
 	public OI() {
 		winchButton.whenPressed(new WinchStart());
 		reverseWinch.whenPressed(new WinchReverse());
-		winchStop.whenPressed(new WinchStop());
+		winchButton.whenReleased(new WinchStop());
 		
 		raiseArm.whenPressed(new RaiseArm());
 		raiseArm.whenReleased(new StopArm());
