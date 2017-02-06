@@ -4,7 +4,13 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
+import org.usfirst.frc.team4043.robot.commands.CloseClaw;
 import org.usfirst.frc.team4043.robot.commands.ExampleCommand;
+import org.usfirst.frc.team4043.robot.commands.LowerArm;
+import org.usfirst.frc.team4043.robot.commands.OpenClaw;
+import org.usfirst.frc.team4043.robot.commands.RaiseArm;
+import org.usfirst.frc.team4043.robot.commands.StopArm;
+import org.usfirst.frc.team4043.robot.commands.StopClaw;
 import org.usfirst.frc.team4043.robot.commands.WinchReverse;
 import org.usfirst.frc.team4043.robot.commands.WinchStart;
 import org.usfirst.frc.team4043.robot.commands.WinchStop;
@@ -43,14 +49,31 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	Joystick driveStick = new Joystick(0);
-	Button winchButton = new JoystickButton(driveStick, 6);
-	Button reverseWinch = new JoystickButton(driveStick, 5);
-	Button winchStop = new JoystickButton(driveStick, 4);
+	Joystick coStick = new Joystick(1);
+	Button winchButton = new JoystickButton(driveStick, 5);
+	Button reverseWinch = new JoystickButton(driveStick, 6);
+	Button winchStop = new JoystickButton(coStick, 5);
+	
+	Button raiseArm = new JoystickButton(driveStick, 4);
+	Button lowerArm = new JoystickButton(driveStick, 2);
+	Button openClaw = new JoystickButton(driveStick, 3);
+	Button closeClaw = new JoystickButton(driveStick, 1);
+	
 	
 	public OI() {
 		winchButton.whenPressed(new WinchStart());
 		reverseWinch.whenPressed(new WinchReverse());
-		winchStop.whenPressed(new WinchStop());
+		winchButton.whenReleased(new WinchStop());
+		
+		raiseArm.whenPressed(new RaiseArm());
+		raiseArm.whenReleased(new StopArm());
+		lowerArm.whenPressed(new LowerArm());
+		lowerArm.whenReleased(new StopArm());
+		openClaw.whenPressed(new OpenClaw());
+		openClaw.whenReleased(new StopClaw());
+		closeClaw.whenPressed(new CloseClaw());
+		closeClaw.whenReleased(new StopClaw());
+		
 	}
 	
 	public Joystick getDriveStick() {

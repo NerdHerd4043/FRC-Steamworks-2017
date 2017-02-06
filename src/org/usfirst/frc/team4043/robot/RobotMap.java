@@ -28,6 +28,9 @@ public class RobotMap {
 	public static CANTalon winch1 = new CANTalon(5);
 	public static CANTalon winch2 = new CANTalon(6);
 	
+	public static CANTalon GrabberArm = new CANTalon(7);
+	public static CANTalon GrabberClaw = new CANTalon(8);
+	
 	public static void init() {
 		LiveWindow.addActuator("DriveTrain", "CAN Talon 4", motorFR);
 		
@@ -41,5 +44,9 @@ public class RobotMap {
 		
 		LiveWindow.addActuator("Winch", "CAN Talon 6", winch2);
 		
+		LiveWindow.addActuator("Arm", "CAN Talon 7", GrabberArm);
+	
+		LiveWindow.addActuator("Claw", "CAN Talon 8", GrabberClaw);
+
 	}
 }
