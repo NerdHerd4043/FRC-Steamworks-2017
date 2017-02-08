@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team4043.robot.commands.CloseClaw;
-import org.usfirst.frc.team4043.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4043.robot.commands.LowerArm;
 import org.usfirst.frc.team4043.robot.commands.OpenClaw;
 import org.usfirst.frc.team4043.robot.commands.RaiseArm;
@@ -16,6 +15,7 @@ import org.usfirst.frc.team4043.robot.commands.StopClaw;
 import org.usfirst.frc.team4043.robot.commands.WinchReverse;
 import org.usfirst.frc.team4043.robot.commands.WinchStart;
 import org.usfirst.frc.team4043.robot.commands.WinchStop;
+import org.usfirst.frc.team4043.robot.commands.BallPickerUpper;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -51,7 +51,7 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	Joystick driveStick = new Joystick(0);
-	Joystick coStick = new Joystick(1);
+	static Joystick coStick = new Joystick(1);
 	Button winchButton = new JoystickButton(driveStick, 6);
 	Button reverseWinch = new JoystickButton(driveStick, 5);
 	Button winchStop = new JoystickButton(coStick, 5);
@@ -68,6 +68,8 @@ public class OI {
 		reverseWinch.whenPressed(new WinchReverse());
 		winchButton.whenReleased(new WinchStop());
 		
+		float BallPickerUpper = (float) coStick.getRawAxis(1);
+		
 		raiseArm.whenPressed(new RaiseArm());
 		raiseArm.whenReleased(new StopArm());
 		lowerArm.whenPressed(new LowerArm());
@@ -82,4 +84,7 @@ public class OI {
 	public Joystick getDriveStick() {
         return driveStick;
     }
+	public static Joystick getCoStick() {
+		return coStick;
+	}
 }
