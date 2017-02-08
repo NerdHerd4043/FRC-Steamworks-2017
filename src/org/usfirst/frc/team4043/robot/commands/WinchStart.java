@@ -9,15 +9,17 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class WinchStart extends Command {
 
-    public WinchStart() {
+    public WinchStart(float axis) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.winch);
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
-    	Robot.winch.start();
+    protected void initialize(float axis) {
+		Robot.winch.start(axis);
+		System.out.println(axis);
+
     }
 
     // Called repeatedly when this Command is scheduled to run

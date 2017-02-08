@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4043.robot;
 
+import edu.wpi.first.wpilibj.ADXL345_I2C.Axes;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.JoystickBase;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -50,8 +52,8 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	Joystick driveStick = new Joystick(0);
 	Joystick coStick = new Joystick(1);
-	Button winchButton = new JoystickButton(driveStick, 5);
-	Button reverseWinch = new JoystickButton(driveStick, 6);
+	Button winchButton = new JoystickButton(driveStick, 6);
+	Button reverseWinch = new JoystickButton(driveStick, 5);
 	Button winchStop = new JoystickButton(coStick, 5);
 	
 	Button raiseArm = new JoystickButton(driveStick, 4);
@@ -61,7 +63,8 @@ public class OI {
 	
 	
 	public OI() {
-		winchButton.whenPressed(new WinchStart());
+		float winchVal = (float) driveStick.getRawAxis(3);
+		winchButton.whenPressed(new WinchStart(winchVal));
 		reverseWinch.whenPressed(new WinchReverse());
 		winchButton.whenReleased(new WinchStop());
 		
