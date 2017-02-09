@@ -8,8 +8,9 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team4043.robot.subsystems.BallPickerUpper;
+import org.usfirst.frc.team4043.robot.subsystems.DuckPlucker;
 import org.usfirst.frc.team4043.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4043.robot.subsystems.DuckPlucker;
 import org.usfirst.frc.team4043.robot.subsystems.GrabberNabber;
 import org.usfirst.frc.team4043.robot.subsystems.Winch;
 
@@ -27,7 +28,7 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain drivetrain;
 	public static Winch winch;
 	public static GrabberNabber grabberNabber;
-	public static BallPickerUpper ballPickerUpper;
+	public static DuckPlucker ballPickerUpper;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -44,7 +45,7 @@ public class Robot extends IterativeRobot {
 		winch = new Winch();
 		grabberNabber = new GrabberNabber();
 		oi = new OI();
-		ballPickerUpper = new BallPickerUpper();
+		ballPickerUpper = new DuckPlucker();
 
 	}
 

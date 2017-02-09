@@ -2,12 +2,13 @@ package org.usfirst.frc.team4043.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team4043.robot.RobotMap;
+import org.usfirst.frc.team4043.robot.commands.BallPickerUpper;
 
-public class BallPickerUpper extends Subsystem {
+public class DuckPlucker extends Subsystem {
 
 	@Override
 	protected void initDefaultCommand() {
-		setDefaultCommand(new org.usfirst.frc.team4043.robot.commands.BallPickerUpper());
+		setDefaultCommand(new BallPickerUpper());
 	}
 
 	public void start(float axis) {
