@@ -25,13 +25,13 @@ public class RobotMap {
 	public static CANTalon motorBR = new CANTalon(3);
 	public static CANTalon motorBL = new CANTalon(1);
 	
-	public static CANTalon winch1 = new CANTalon(0); // this should be 5
+	public static CANTalon winch1 = new CANTalon(5);
 	public static CANTalon winch2 = new CANTalon(6);
 	
 	public static CANTalon GrabberArm = new CANTalon(7);
 	public static CANTalon GrabberClaw = new CANTalon(8);
 	
-	public static CANTalon ballPickerUpper = new CANTalon(5);// this should be 9
+	public static CANTalon ballPickerUpper = new CANTalon(9);
 	
 	public static void init() {
 		LiveWindow.addActuator("DriveTrain", "CAN Talon 4", motorFR);
