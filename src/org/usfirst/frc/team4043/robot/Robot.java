@@ -28,6 +28,18 @@ public class Robot extends IterativeRobot {
 	public static Winch winch;
 	public static GrabberNabber grabberNabber;
 	public static DuckPlucker ballPickerUpper;
+	
+	double kP = 1/15000;
+	double kI = 1/100000;
+	double error;
+	float p_out;
+	float i_out;
+	float output;
+	int current_ticks; //total ticks from the encoder
+	double integral_err;
+	int autoDistanceInt;
+	double target_ticks = autoDistanceInt;  //number of ticks to target location
+	double prev_err;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -88,6 +100,9 @@ public class Robot extends IterativeRobot {
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+		
+		String autoDistanceString = SmartDashboard.getString("DB/String 1", "myDefaultData");
+		autoDistanceInt = Integer.parseInt(autoDistanceString);
 	}
 
 	/**
@@ -96,6 +111,34 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+	}
+	
+	public float autonomous_PID() {
+		current_ticks = drivetrain.renc.getRaw();
+		error = target_ticks - current_ticks;
+		integral_err += error;
+		
+		if (integral_err > 900000) {
+			integral_err = 900000;
+		}
+		if (integral_err < -900000) {
+			integral_err = -900000;
+		}
+		
+		p_out = (float) (error * kP);
+		i_out = (float) (error * kI);
+		
+		output = p_out + i_out;
+		
+		if (output > 1) {
+			output = 1;
+		}
+		if (output < -1) {
+			output = -1;
+		}
+		
+		prev_err = error;
+		return output;
 	}
 
 	@Override

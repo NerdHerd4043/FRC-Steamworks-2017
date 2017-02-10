@@ -7,6 +7,7 @@ import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -23,11 +24,17 @@ public class DriveTrain extends Subsystem {
 	public AnalogInput frontRangeFinder;
 	
 	public ADXRS450_Gyro gyroSPI;
+	public Encoder renc;
+	public Encoder lenc;
 	public DriveTrain() {
 		super();
 		//TODO: Double check this, are the motors going in the correct spots? Hover over drive base to see where they should go.
 		//Changed 2-2-2017
-		drive = new RobotDrive(RobotMap.motorFL, RobotMap.motorBL, RobotMap.motorFR, RobotMap.motorBR); 
+		drive = new RobotDrive(RobotMap.motorFL, RobotMap.motorBL, RobotMap.motorFR, RobotMap.motorBR);
+		gyroSPI = new ADXRS450_Gyro();
+		gyroSPI.calibrate();
+		renc = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+		lenc = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
 	}
 
     // Put methods for controlling this subsystem
