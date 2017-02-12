@@ -30,7 +30,7 @@ public class GrabberNabber extends Subsystem {
     }
 	
 	public void StopClaw() {
-		grabbernabber.set(DoubleSolenoid.Value.kOff);
+		grabbernabber.set(false);
     }
 	
 	public void RaiseArm() {
