@@ -2,6 +2,8 @@ package org.usfirst.frc.team4043.robot.subsystems;
 
 import org.usfirst.frc.team4043.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -11,6 +13,8 @@ public class GrabberNabber extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+	
+	Solenoid grabbernabber = new Solenoid(0);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -18,15 +22,15 @@ public class GrabberNabber extends Subsystem {
     }
     
 	public void OpenClaw() {
-		RobotMap.GrabberClaw.set(0.5);
+		grabbernabber.set(true);
     }
 	
 	public void CloseClaw() {
-		RobotMap.GrabberClaw.set(-0.5);
+		grabbernabber.set(false);
     }
 	
 	public void StopClaw() {
-		RobotMap.GrabberClaw.set(0);
+		grabbernabber.set(DoubleSolenoid.Value.kOff);
     }
 	
 	public void RaiseArm() {

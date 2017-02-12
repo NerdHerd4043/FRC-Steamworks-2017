@@ -6,12 +6,15 @@ import edu.wpi.first.wpilibj.JoystickBase;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
-import org.usfirst.frc.team4043.robot.commands.CloseClaw;
+//import org.usfirst.frc.team4043.robot.commands.CloseClaw;
 import org.usfirst.frc.team4043.robot.commands.LowerArm;
-import org.usfirst.frc.team4043.robot.commands.OpenClaw;
+//import org.usfirst.frc.team4043.robot.commands.OpenClaw;
+import org.usfirst.frc.team4043.robot.commands.PneumaticsClose;
+import org.usfirst.frc.team4043.robot.commands.PneumaticsStop;
+import org.usfirst.frc.team4043.robot.commands.PnuematicsOpen;
 import org.usfirst.frc.team4043.robot.commands.RaiseArm;
 import org.usfirst.frc.team4043.robot.commands.StopArm;
-import org.usfirst.frc.team4043.robot.commands.StopClaw;
+//import org.usfirst.frc.team4043.robot.commands.StopClaw;
 import org.usfirst.frc.team4043.robot.commands.WinchReverse;
 import org.usfirst.frc.team4043.robot.commands.WinchStart;
 import org.usfirst.frc.team4043.robot.commands.WinchStop;
@@ -74,10 +77,10 @@ public class OI {
 		raiseArm.whenReleased(new StopArm());
 		lowerArm.whenPressed(new LowerArm());
 		lowerArm.whenReleased(new StopArm());
-		openClaw.whenPressed(new OpenClaw());
-		openClaw.whenReleased(new StopClaw());
-		closeClaw.whenPressed(new CloseClaw());
-		closeClaw.whenReleased(new StopClaw());
+		openClaw.whenPressed(new PnuematicsOpen());
+		openClaw.whenReleased(new PneumaticsStop());
+		closeClaw.whenPressed(new PneumaticsClose());
+		closeClaw.whenReleased(new PneumaticsStop());
 		
 	}
 	
