@@ -14,7 +14,7 @@ public class GrabberNabber extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	Solenoid grabbernabber = new Solenoid(0);
+	DoubleSolenoid grabbernabber = new DoubleSolenoid(3, 4);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -22,15 +22,15 @@ public class GrabberNabber extends Subsystem {
     }
     
 	public void OpenClaw() {
-		grabbernabber.set(true);
+		grabbernabber.set(DoubleSolenoid.Value.kForward);
     }
 	
 	public void CloseClaw() {
-		grabbernabber.set(false);
+		grabbernabber.set(DoubleSolenoid.Value.kReverse);
     }
 	
 	public void StopClaw() {
-		grabbernabber.set(false);
+		grabbernabber.set(DoubleSolenoid.Value.kOff);
     }
 	
 	public void RaiseArm() {
