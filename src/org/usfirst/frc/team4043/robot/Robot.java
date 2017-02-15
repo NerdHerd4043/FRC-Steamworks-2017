@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4043.robot.subsystems.DuckPlucker;
+import org.usfirst.frc.team4043.robot.subsystems.FlipFlop;
 import org.usfirst.frc.team4043.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4043.robot.subsystems.GrabberNabber;
 import org.usfirst.frc.team4043.robot.subsystems.Winch;
@@ -29,6 +30,7 @@ public class Robot extends IterativeRobot {
 	public static Winch winch;
 	public static GrabberNabber grabberNabber;
 	public static DuckPlucker ballPickerUpper;
+	public static FlipFlop flipFlop;
 	
 	double kP = 1/15000;
 	double kI = 1/100000;
@@ -58,6 +60,7 @@ public class Robot extends IterativeRobot {
 		grabberNabber = new GrabberNabber();
 		oi = new OI();
 		ballPickerUpper = new DuckPlucker();
+		flipFlop = new FlipFlop();
 		
 		
 		CameraServer.getInstance().startAutomaticCapture();

@@ -19,6 +19,9 @@ import org.usfirst.frc.team4043.robot.commands.WinchReverse;
 import org.usfirst.frc.team4043.robot.commands.WinchStart;
 import org.usfirst.frc.team4043.robot.commands.WinchStop;
 import org.usfirst.frc.team4043.robot.commands.BallPickerUpper;
+import org.usfirst.frc.team4043.robot.commands.Flip;
+import org.usfirst.frc.team4043.robot.commands.FlipFlopStop;
+import org.usfirst.frc.team4043.robot.commands.Flop;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -55,9 +58,13 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	Joystick driveStick = new Joystick(0);
 	static Joystick coStick = new Joystick(1);
+	
 	Button winchButton = new JoystickButton(driveStick, 6);
 	Button reverseWinch = new JoystickButton(driveStick, 5);
 	Button winchStop = new JoystickButton(coStick, 5);
+	
+	Button flopButton = new JoystickButton(coStick, 1);
+	Button flipButton = new JoystickButton(coStick, 2);
 	
 	Button raiseArm = new JoystickButton(driveStick, 4);
 	Button lowerArm = new JoystickButton(driveStick, 2);
@@ -81,6 +88,10 @@ public class OI {
 		openClaw.whenReleased(new PneumaticsStop());
 		closeClaw.whenPressed(new PneumaticsClose());
 		closeClaw.whenReleased(new PneumaticsStop());
+		flopButton.whenPressed(new Flop());
+		flipButton.whenPressed(new Flip());
+		flopButton.whenReleased(new FlipFlopStop());
+		flipButton.whenReleased(new FlipFlopStop());
 		
 	}
 	

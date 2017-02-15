@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4043.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -11,14 +12,18 @@ public class FlipFlop extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	Solenoid flipFlop = new Solenoid(1);
+	DoubleSolenoid flipFlop = new DoubleSolenoid(1, 2);
 	
 	public void flip() {
-		flipFlop.set(true);
+		flipFlop.set(DoubleSolenoid.Value.kReverse);
 	}
 	
 	public void flop() {
-		flipFlop.set(false);
+		flipFlop.set(DoubleSolenoid.Value.kForward);
+	}
+	
+	public void stop() {
+		flipFlop.set(DoubleSolenoid.Value.kOff);
 	}
 
     public void initDefaultCommand() {
