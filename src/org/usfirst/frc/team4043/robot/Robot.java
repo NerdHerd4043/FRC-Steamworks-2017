@@ -45,6 +45,7 @@ public class Robot extends IterativeRobot {
 	int autoDistanceInt;
 	double target_ticks = autoDistanceInt;  //number of ticks to target location
 	double prev_err;
+	int angle;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -152,6 +153,10 @@ public class Robot extends IterativeRobot {
 		return output;
 		
 		//Hey peter
+	}
+	
+	public int turning(int angle) {
+		
 	}
 
 	@Override
