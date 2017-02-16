@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team4043.robot.commands.LowerArm;
 //import org.usfirst.frc.team4043.robot.commands.OpenClaw;
 import org.usfirst.frc.team4043.robot.commands.PneumaticsClose;
-import org.usfirst.frc.team4043.robot.commands.PneumaticsStop;
+//import org.usfirst.frc.team4043.robot.commands.PneumaticsStop;
 import org.usfirst.frc.team4043.robot.commands.PnuematicsOpen;
 import org.usfirst.frc.team4043.robot.commands.RaiseArm;
 import org.usfirst.frc.team4043.robot.commands.StopArm;
@@ -20,7 +20,7 @@ import org.usfirst.frc.team4043.robot.commands.WinchStart;
 import org.usfirst.frc.team4043.robot.commands.WinchStop;
 import org.usfirst.frc.team4043.robot.commands.BallPickerUpper;
 import org.usfirst.frc.team4043.robot.commands.Flip;
-import org.usfirst.frc.team4043.robot.commands.FlipFlopStop;
+//import org.usfirst.frc.team4043.robot.commands.FlipFlopStop;
 import org.usfirst.frc.team4043.robot.commands.Flop;
 
 /**
@@ -85,13 +85,13 @@ public class OI {
 		lowerArm.whenPressed(new LowerArm());
 		lowerArm.whenReleased(new StopArm());
 		openClaw.whenPressed(new PnuematicsOpen());
-		openClaw.whenReleased(new PneumaticsStop());
+		//openClaw.whenReleased(new PneumaticsStop());
 		closeClaw.whenPressed(new PneumaticsClose());
-		closeClaw.whenReleased(new PneumaticsStop());
+		//closeClaw.whenReleased(new PneumaticsStop());
 		flopButton.whenPressed(new Flop());
 		flipButton.whenPressed(new Flip());
-		flopButton.whenReleased(new FlipFlopStop());
-		flipButton.whenReleased(new FlipFlopStop());
+		//flopButton.whenReleased(new FlipFlopStop());
+		//flipButton.whenReleased(new FlipFlopStop());
 		
 	}
 	

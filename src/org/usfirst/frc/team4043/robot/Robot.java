@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4043.robot.subsystems.DuckPlucker;
 import org.usfirst.frc.team4043.robot.subsystems.FlipFlop;
+import org.usfirst.frc.team4043.robot.commands.Flip;
+import org.usfirst.frc.team4043.robot.commands.PneumaticsClose;
 import org.usfirst.frc.team4043.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4043.robot.subsystems.GrabberNabber;
 import org.usfirst.frc.team4043.robot.subsystems.Winch;
@@ -62,6 +64,8 @@ public class Robot extends IterativeRobot {
 		ballPickerUpper = new DuckPlucker();
 		flipFlop = new FlipFlop();
 		
+		new Flip();
+		new PneumaticsClose();
 		
 		CameraServer.getInstance().startAutomaticCapture();
 
