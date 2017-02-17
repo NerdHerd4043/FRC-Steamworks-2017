@@ -45,7 +45,13 @@ public class Robot extends IterativeRobot {
 	int autoDistanceInt;
 	double target_ticks = autoDistanceInt;  //number of ticks to target location
 	double prev_err;
-	int angle;
+	double gyroAngle;
+	double wanted_angle;
+	double AngleSpeed = -0.6d;
+	public int Step;
+	public float targetAngle;
+	String targetAnglestr;
+	public double angleMinSpeed;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -115,6 +121,8 @@ public class Robot extends IterativeRobot {
 		
 		String autoDistanceString = SmartDashboard.getString("DB/String 1", "myDefaultData");
 		autoDistanceInt = Integer.parseInt(autoDistanceString);
+		
+		drivetrain.gyroSPI.reset();
 	}
 
 	/**
@@ -155,8 +163,75 @@ public class Robot extends IterativeRobot {
 		//Hey peter
 	}
 	
-	public int turning(int angle) {
+	public void auto2() {
+		gyroAngle = drivetrain.gyroSPI.getAngle();
+		targetAnglestr = SmartDashboard.getString("DB/String 1", "myDefaultData");
+		targetAngle = Float.parseFloat(targetAnglestr);
 		
+		if (Step == 1) {
+			if (Math.abs(gyroAngle) < Math.abs(targetAngle)) {
+				if (targetAngle < 0){
+				    drivetrain.drive.arcadeDrive(0, AngleSpeed);
+				}
+				else{
+					drivetrain.drive.arcadeDrive(0, -AngleSpeed);
+				}
+			} else {
+				drivetrain.drive.arcadeDrive(0, 0);
+				Step = 2;
+				System.out.println("Step2");
+			}
+		}
+		
+		if (Step == 2) {
+				if (targetAngle < 0){
+					if (gyroAngle < 0) {
+						drivetrain.drive.arcadeDrive(0, -AngleSpeed);
+					} else {
+						drivetrain.drive.arcadeDrive(0, 0);
+						Step = 1;
+					}
+				}
+				else{
+					if (gyroAngle > 0) {
+						drivetrain.drive.arcadeDrive(0, -AngleSpeed);
+					} else {
+						drivetrain.drive.arcadeDrive(0, 0);
+					}
+				}
+		
+		}
+	}
+	
+	public void auto3() {
+		gyroAngle = drivetrain.gyroSPI.getAngle();
+		if (gyroAngle > targetAngle + 1.5){
+			drivetrain.drive.arcadeDrive(0, findAngleSpeed(gyroAngle));
+		}
+		if (gyroAngle < targetAngle -1.5){
+			drivetrain.drive.arcadeDrive(0, findAngleSpeed(gyroAngle));
+		}
+	}
+	
+	double figuredSpeed = 0;
+	
+	public double findAngleSpeed(double gyroAngle) {
+		if (gyroAngle < targetAngle + 10 && gyroAngle > targetAngle){
+			return angleMinSpeed;
+		}
+		if (gyroAngle > targetAngle -10 && gyroAngle < targetAngle){
+			return -angleMinSpeed;
+		}
+		figuredSpeed = (gyroAngle - targetAngle) * AngleSpeed;
+		if (Math.abs(figuredSpeed) > Math.abs(AngleSpeed)) {
+			if (figuredSpeed > 0) {
+				return -AngleSpeed;
+			} else {
+				return AngleSpeed;
+			}
+		} else {
+			return figuredSpeed;
+		}		
 	}
 
 	@Override
