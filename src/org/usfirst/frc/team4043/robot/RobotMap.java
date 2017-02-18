@@ -34,6 +34,8 @@ public class RobotMap {
 	public static CANTalon ballPickerUpper = new CANTalon(9);
 	
 	public static void init() {
+		GrabberArm.reverseSensor(true);
+		
 		LiveWindow.addActuator("DriveTrain", "CAN Talon 4", motorFR);
 		
 		LiveWindow.addActuator("DriveTrain", "CAN Talon 2", motorFL);
