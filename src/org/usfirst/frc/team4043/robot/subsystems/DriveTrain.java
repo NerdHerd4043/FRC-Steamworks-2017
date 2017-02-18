@@ -41,7 +41,12 @@ public class DriveTrain extends Subsystem {
     // here. Call these from Commands.
 	
 	public void drive(double throttle, double turn) {
-		drive.arcadeDrive(throttle, turn);
+		if(driveDirection) {
+			drive.arcadeDrive(throttle, turn);
+		}
+		else {
+			drive.arcadeDrive(-throttle, -turn);
+		}
 	}
 	
 	public float maxSpeed = -1;
@@ -58,6 +63,7 @@ public class DriveTrain extends Subsystem {
 	public double turnStep = 0.1d;
 	public double turnSlowThreshhold = 0.25d;
 	public double maxSpeedDuringManualTurn = -0.8f;
+	public boolean driveDirection = true;
 	
 	public void drive(Joystick joy) {
 		if (SmartDashboard.getBoolean("DB/Button 0", false)) {

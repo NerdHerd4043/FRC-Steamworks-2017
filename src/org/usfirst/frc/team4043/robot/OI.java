@@ -18,6 +18,7 @@ import org.usfirst.frc.team4043.robot.commands.StopArm;
 import org.usfirst.frc.team4043.robot.commands.WinchReverse;
 import org.usfirst.frc.team4043.robot.commands.WinchStart;
 import org.usfirst.frc.team4043.robot.commands.WinchStop;
+import org.usfirst.frc.team4043.robot.commands.direction_reverse;
 import org.usfirst.frc.team4043.robot.commands.BallPickerUpper;
 import org.usfirst.frc.team4043.robot.commands.Flip;
 //import org.usfirst.frc.team4043.robot.commands.FlipFlopStop;
@@ -71,6 +72,8 @@ public class OI {
 	Button openClaw = new JoystickButton(driveStick, 3);
 	Button closeClaw = new JoystickButton(driveStick, 1);
 	
+	Button reverseDrive = new JoystickButton(driveStick, 7);
+	
 	
 	public OI() {
 		float winchVal = (float) driveStick.getRawAxis(3);
@@ -90,6 +93,7 @@ public class OI {
 		//closeClaw.whenReleased(new PneumaticsStop());
 		flopButton.whenPressed(new Flop());
 		flipButton.whenPressed(new Flip());
+		reverseDrive.whenPressed(new direction_reverse());
 		//flopButton.whenReleased(new FlipFlopStop());
 		//flipButton.whenReleased(new FlipFlopStop());
 		

@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4043.robot.subsystems.DuckPlucker;
 import org.usfirst.frc.team4043.robot.subsystems.FlipFlop;
 import org.usfirst.frc.team4043.robot.commands.Flip;
+import org.usfirst.frc.team4043.robot.commands.Flop;
 import org.usfirst.frc.team4043.robot.commands.PneumaticsClose;
 import org.usfirst.frc.team4043.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4043.robot.subsystems.GrabberNabber;
@@ -66,13 +67,13 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto mode", chooser);
 		drivetrain = new DriveTrain();
 		winch = new Winch();
+		flipFlop = new FlipFlop();
 		grabberNabber = new GrabberNabber();
 		oi = new OI();
 		ballPickerUpper = new DuckPlucker();
-		flipFlop = new FlipFlop();
 		
-		new Flip();
-		new PneumaticsClose();
+		new Flop();
+
 		
 		CameraServer.getInstance().startAutomaticCapture();
 
@@ -145,8 +146,8 @@ public class Robot extends IterativeRobot {
 			integral_err = -900000;
 		}
 		
-		p_out = error * kP;
-		i_out = error * kI;
+		//p_out = error * kP;
+		//i_out = error * kI;
 		
 		output = p_out + i_out;
 		
@@ -235,9 +236,7 @@ public class Robot extends IterativeRobot {
 	}
 
 	
-	public void auto_middle() {
-		drivetrain.drive(autonomous_PID());
-	}
+	//
 	@Override
 	public void teleopInit() {
 		// This makes sure that the autonomous stops running when

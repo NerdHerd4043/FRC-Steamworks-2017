@@ -14,7 +14,7 @@ public class GrabberNabber extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	Solenoid grabbernabber = new Solenoid(3); // Actually single solenoid in port 1
+	Solenoid grabbernabber = new Solenoid(16, 3);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

@@ -1,7 +1,12 @@
 package org.usfirst.frc.team4043.robot;
 
+import org.usfirst.frc.team4043.robot.commands.Flip;
+import org.usfirst.frc.team4043.robot.commands.Flop;
+import org.usfirst.frc.team4043.robot.commands.PneumaticsClose;
+
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -33,8 +38,13 @@ public class RobotMap {
 	
 	public static CANTalon ballPickerUpper = new CANTalon(9);
 	
+	public static Compressor compressor = new Compressor(16);
+	
 	public static void init() {
 		GrabberArm.reverseSensor(true);
+		compressor.setClosedLoopControl(true);
+		new Flip();
+		new PneumaticsClose();
 		
 		LiveWindow.addActuator("DriveTrain", "CAN Talon 4", motorFR);
 		
