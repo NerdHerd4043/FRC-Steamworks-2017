@@ -15,9 +15,9 @@ import org.usfirst.frc.team4043.robot.commands.PnuematicsOpen;
 import org.usfirst.frc.team4043.robot.commands.RaiseArm;
 import org.usfirst.frc.team4043.robot.commands.StopArm;
 //import org.usfirst.frc.team4043.robot.commands.StopClaw;
-import org.usfirst.frc.team4043.robot.commands.WinchReverse;
-import org.usfirst.frc.team4043.robot.commands.WinchStart;
-import org.usfirst.frc.team4043.robot.commands.WinchStop;
+//import org.usfirst.frc.team4043.robot.commands.WinchReverse;
+//import org.usfirst.frc.team4043.robot.commands.WinchStart;
+//import org.usfirst.frc.team4043.robot.commands.WinchStop;
 import org.usfirst.frc.team4043.robot.commands.direction_reverse;
 import org.usfirst.frc.team4043.robot.commands.BallPickerUpper;
 import org.usfirst.frc.team4043.robot.commands.Flip;
@@ -60,36 +60,37 @@ public class OI {
 	Joystick driveStick = new Joystick(0);
 	static Joystick coStick = new Joystick(1);
 	
-	Button winchButton = new JoystickButton(coStick, 6);
-	Button reverseWinch = new JoystickButton(coStick, 5);
-	Button winchStop = new JoystickButton(coStick, 7);
+	//Button winchButton = new JoystickButton(coStick, 6);
+	//Button reverseWinch = new JoystickButton(coStick, 5);
+	//Button winchStop = new JoystickButton(coStick, 7);
 	
 	Button flopButton = new JoystickButton(coStick, 1);
 	Button flipButton = new JoystickButton(coStick, 2);
 	
 	Button raiseArm = new JoystickButton(driveStick, 4);
-	Button lowerArm = new JoystickButton(driveStick, 2);
-	Button openClaw = new JoystickButton(driveStick, 3);
-	Button closeClaw = new JoystickButton(driveStick, 1);
+	Button lowerArm = new JoystickButton(driveStick, 1);
+	//Button openClaw = new JoystickButton(driveStick, 3);
+	//Button closeClaw = new JoystickButton(driveStick, 2);
 	
 //	Button reverseDrive = new JoystickButton(driveStick, 7);
 	
 	
 	public OI() {
-		float winchVal = (float) driveStick.getRawAxis(3);
-		winchButton.whenPressed(new WinchStart(winchVal));
-		reverseWinch.whenPressed(new WinchReverse());
-		winchButton.whenReleased(new WinchStop());
+		//float winchVal = (float) driveStick.getRawAxis(3);
+		//winchButton.whenPressed(new WinchStart(winchVal));
+		//reverseWinch.whenPressed(new WinchReverse());
+		//winchButton.whenReleased(new WinchStop());
 		
 		float BallPickerUpper = (float) coStick.getRawAxis(1);
+		float Winch = (float) coStick.getRawAxis(5);
 		
 		raiseArm.whenPressed(new RaiseArm());
 		raiseArm.whenReleased(new StopArm());
 		lowerArm.whenPressed(new LowerArm());
 		lowerArm.whenReleased(new StopArm());
-		openClaw.whenPressed(new PnuematicsOpen());
+		//openClaw.whenPressed(new PnuematicsOpen());
 		//openClaw.whenReleased(new PneumaticsStop());
-		closeClaw.whenPressed(new PneumaticsClose());
+		//closeClaw.whenPressed(new PneumaticsClose());
 		//closeClaw.whenReleased(new PneumaticsStop());
 		flopButton.whenPressed(new Flop());
 		flipButton.whenPressed(new Flip());
