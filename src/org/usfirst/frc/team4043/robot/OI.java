@@ -60,9 +60,9 @@ public class OI {
 	Joystick driveStick = new Joystick(0);
 	static Joystick coStick = new Joystick(1);
 	
-	Button winchButton = new JoystickButton(driveStick, 6);
-	Button reverseWinch = new JoystickButton(driveStick, 5);
-	Button winchStop = new JoystickButton(coStick, 5);
+	Button winchButton = new JoystickButton(coStick, 6);
+	Button reverseWinch = new JoystickButton(coStick, 5);
+	Button winchStop = new JoystickButton(coStick, 7);
 	
 	Button flopButton = new JoystickButton(coStick, 1);
 	Button flipButton = new JoystickButton(coStick, 2);
@@ -72,7 +72,7 @@ public class OI {
 	Button openClaw = new JoystickButton(driveStick, 3);
 	Button closeClaw = new JoystickButton(driveStick, 1);
 	
-	Button reverseDrive = new JoystickButton(driveStick, 7);
+//	Button reverseDrive = new JoystickButton(driveStick, 7);
 	
 	
 	public OI() {
@@ -93,7 +93,7 @@ public class OI {
 		//closeClaw.whenReleased(new PneumaticsStop());
 		flopButton.whenPressed(new Flop());
 		flipButton.whenPressed(new Flip());
-		reverseDrive.whenPressed(new direction_reverse());
+		//reverseDrive.whenPressed(new direction_reverse());
 		//flopButton.whenReleased(new FlipFlopStop());
 		//flipButton.whenReleased(new FlipFlopStop());
 		

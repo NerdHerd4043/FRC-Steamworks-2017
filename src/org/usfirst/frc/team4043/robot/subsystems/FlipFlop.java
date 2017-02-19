@@ -17,12 +17,12 @@ public class FlipFlop extends Subsystem {
 	Solenoid flipflop = new Solenoid(16, 1);
 	
 	public void flip() {
-		flipflop.set(false);
+		flipflop.set(true);
 		System.out.println("FLOP!");
 	}
 	
 	public void flop() {
-		flipflop.set(true);
+		flipflop.set(false);
 		System.out.println("FLIP!");
 	}
 	
