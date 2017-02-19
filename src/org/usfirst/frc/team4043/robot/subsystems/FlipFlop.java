@@ -15,6 +15,8 @@ public class FlipFlop extends Subsystem {
     // here. Call these from Commands.
 	
 	Solenoid flipflop = new Solenoid(16, 1);
+	public boolean flipflopstate = true;
+	
 	
 	public void flip() {
 		flipflop.set(true);
@@ -24,6 +26,11 @@ public class FlipFlop extends Subsystem {
 	public void flop() {
 		flipflop.set(false);
 		System.out.println("FLIP!");
+	}
+	
+	public void flipFlopMove() {
+		flipflop.set(flipflopstate);
+		flipflopstate = !flipflopstate;
 	}
 	
 	//public void stop() {
