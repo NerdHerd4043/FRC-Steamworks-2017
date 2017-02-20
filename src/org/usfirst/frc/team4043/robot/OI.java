@@ -1,31 +1,27 @@
 package org.usfirst.frc.team4043.robot;
 
-import edu.wpi.first.wpilibj.ADXL345_I2C.Axes;
+//import edu.wpi.first.wpilibj.ADXL345_I2C.Axes;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.JoystickBase;
+//import edu.wpi.first.wpilibj.JoystickBase;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 //import org.usfirst.frc.team4043.robot.commands.CloseClaw;
 import org.usfirst.frc.team4043.robot.commands.LowerArm;
 //import org.usfirst.frc.team4043.robot.commands.OpenClaw;
-import org.usfirst.frc.team4043.robot.commands.PneumaticsClose;
-//import org.usfirst.frc.team4043.robot.commands.PneumaticsStop;
-import org.usfirst.frc.team4043.robot.commands.PnuematicsOpen;
+//import org.usfirst.frc.team4043.robot.commands.PneumaticsClose;
+//import org.usfirst.frc.team4043.robot.commands.PnuematicsOpen;
 import org.usfirst.frc.team4043.robot.commands.RaiseArm;
 import org.usfirst.frc.team4043.robot.commands.StopArm;
-//import org.usfirst.frc.team4043.robot.commands.StopClaw;
-//import org.usfirst.frc.team4043.robot.commands.WinchReverse;
-//import org.usfirst.frc.team4043.robot.commands.WinchStart;
-//import org.usfirst.frc.team4043.robot.commands.WinchStop;
-import org.usfirst.frc.team4043.robot.commands.direction_reverse;
 import org.usfirst.frc.team4043.robot.commands.sP;
-import org.usfirst.frc.team4043.robot.commands.BallPickerUpper;
+//import org.usfirst.frc.team4043.robot.commands.BallPickerUpper;
 import org.usfirst.frc.team4043.robot.commands.ClawMove;
 import org.usfirst.frc.team4043.robot.commands.DoorToggle;
-import org.usfirst.frc.team4043.robot.commands.Flip;
+import org.usfirst.frc.team4043.robot.commands.FloorDown;
+import org.usfirst.frc.team4043.robot.commands.FloorUp;
+//import org.usfirst.frc.team4043.robot.commands.Flip;
 //import org.usfirst.frc.team4043.robot.commands.FlipFlopStop;
-import org.usfirst.frc.team4043.robot.commands.Flop;
+//import org.usfirst.frc.team4043.robot.commands.Flop;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -98,9 +94,13 @@ public class OI {
 		lowerArm.whenPressed(new LowerArm());
 		lowerArm.whenReleased(new StopArm());
 		
+		floorUp.whenPressed(new FloorUp());
+		floorDown.whenPressed(new FloorDown());
 		clawButton.whenPressed(new ClawMove());
 		sp.whileHeld(new sP());
 		doortoggle.whenPressed(new DoorToggle());
+		
+		
 		//openClaw.whenPressed(new PnuematicsOpen());
 		//openClaw.whenReleased(new PneumaticsStop());
 		//closeClaw.whenPressed(new PneumaticsClose());

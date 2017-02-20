@@ -5,19 +5,19 @@ import org.usfirst.frc.team4043.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
-*
+ *
  */
-public class direction_reverse extends Command {
+public class FloorDown extends Command {
 
-    public direction_reverse() {
+    public FloorDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.drivetrain);
+    	requires(Robot.ballbox);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.drivetrain.driveDirection = !Robot.drivetrain.driveDirection;
+    	Robot.ballbox.floorDown();
     }
 
     // Called repeatedly when this Command is scheduled to run

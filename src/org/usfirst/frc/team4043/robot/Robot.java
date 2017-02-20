@@ -14,6 +14,7 @@ import org.usfirst.frc.team4043.robot.subsystems.FlipFlop;
 import org.usfirst.frc.team4043.robot.commands.Flip;
 import org.usfirst.frc.team4043.robot.commands.Flop;
 import org.usfirst.frc.team4043.robot.commands.PneumaticsClose;
+import org.usfirst.frc.team4043.robot.subsystems.BallBox;
 import org.usfirst.frc.team4043.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4043.robot.subsystems.GrabberNabber;
 import org.usfirst.frc.team4043.robot.subsystems.Winch;
@@ -34,6 +35,7 @@ public class Robot extends IterativeRobot {
 	public static GrabberNabber grabberNabber;
 	public static DuckPlucker ballPickerUpper;
 	public static FlipFlop flipFlop;
+	public static BallBox ballbox;
 	
 	double kP = 1/15000;
 	double kI = 1/100000;
@@ -70,6 +72,7 @@ public class Robot extends IterativeRobot {
 		flipFlop = new FlipFlop();
 		grabberNabber = new GrabberNabber();
 		ballPickerUpper = new DuckPlucker();
+		ballbox = new BallBox();
 		oi = new OI();
 
 		
