@@ -31,7 +31,8 @@ public class GrabberNabber extends Subsystem {
     }
 	
 	public void MoveClaw() {
-		grabbernabber.set(!grabbernabber.get());
+		grabbernabber.set(grabberState);
+		grabberState = !grabberState;
 	}
 	
 	//public void StopClaw() {
