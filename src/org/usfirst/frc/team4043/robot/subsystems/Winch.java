@@ -19,8 +19,8 @@ public class Winch extends Subsystem {
 	}
 
 	public void start(float axis) {
-		RobotMap.winch1.set(axis);
-		RobotMap.winch2.set(axis);
+		RobotMap.winch1.set(-axis);
+		RobotMap.winch2.set(-axis);
 
 	}
 
