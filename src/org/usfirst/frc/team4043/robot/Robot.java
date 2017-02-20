@@ -69,9 +69,8 @@ public class Robot extends IterativeRobot {
 		winch = new Winch();
 		flipFlop = new FlipFlop();
 		grabberNabber = new GrabberNabber();
-		oi = new OI();
 		ballPickerUpper = new DuckPlucker();
-		
+		oi = new OI();
 
 		
 		CameraServer.getInstance().startAutomaticCapture();
