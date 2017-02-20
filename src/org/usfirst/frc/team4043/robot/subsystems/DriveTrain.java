@@ -41,12 +41,7 @@ public class DriveTrain extends Subsystem {
     // here. Call these from Commands.
 	
 	public void drive(double throttle, double turn) {
-		if(driveDirection) {
 			drive.arcadeDrive(throttle, turn);
-		}
-		else {
-			drive.arcadeDrive(-throttle, -turn);
-		}
 	}
 	
 	public float maxSpeed = -1;
