@@ -29,8 +29,7 @@ public class FlipFlop extends Subsystem {
 	}
 	
 	public void flipFlopMove() {
-		flipflop.set(flipflopstate);
-		flipflopstate = !flipflopstate;
+		flipflop.set(!flipflop.get());
 	}
 	
 	//public void stop() {

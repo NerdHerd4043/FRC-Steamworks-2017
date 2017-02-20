@@ -72,7 +72,6 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		ballPickerUpper = new DuckPlucker();
 		
-		new Flop();
 
 		
 		CameraServer.getInstance().startAutomaticCapture();

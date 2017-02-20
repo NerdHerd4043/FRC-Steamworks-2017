@@ -19,7 +19,10 @@ import org.usfirst.frc.team4043.robot.commands.StopArm;
 //import org.usfirst.frc.team4043.robot.commands.WinchStart;
 //import org.usfirst.frc.team4043.robot.commands.WinchStop;
 import org.usfirst.frc.team4043.robot.commands.direction_reverse;
+import org.usfirst.frc.team4043.robot.commands.sP;
 import org.usfirst.frc.team4043.robot.commands.BallPickerUpper;
+import org.usfirst.frc.team4043.robot.commands.ClawMove;
+import org.usfirst.frc.team4043.robot.commands.DoorToggle;
 import org.usfirst.frc.team4043.robot.commands.Flip;
 //import org.usfirst.frc.team4043.robot.commands.FlipFlopStop;
 import org.usfirst.frc.team4043.robot.commands.Flop;
@@ -64,11 +67,17 @@ public class OI {
 	//Button reverseWinch = new JoystickButton(coStick, 5);
 	//Button winchStop = new JoystickButton(coStick, 7);
 	
-	Button flopButton = new JoystickButton(coStick, 1);
-	Button flipButton = new JoystickButton(coStick, 2);
-	
+	Button clawButton = new JoystickButton(driveStick, 6);
 	Button raiseArm = new JoystickButton(driveStick, 4);
 	Button lowerArm = new JoystickButton(driveStick, 1);
+	
+	//Button flopButton = new JoystickButton(coStick, 1);
+	//Button flipButton = new JoystickButton(coStick, 2);
+	Button sp = new JoystickButton(coStick, 6);
+	Button doortoggle = new JoystickButton(coStick, 1);
+	Button floorUp = new JoystickButton(coStick, 3);
+	Button floorDown = new JoystickButton(coStick, 4);
+	
 	//Button openClaw = new JoystickButton(driveStick, 3);
 	//Button closeClaw = new JoystickButton(driveStick, 2);
 	
@@ -88,12 +97,16 @@ public class OI {
 		raiseArm.whenReleased(new StopArm());
 		lowerArm.whenPressed(new LowerArm());
 		lowerArm.whenReleased(new StopArm());
+		
+		clawButton.whenPressed(new ClawMove());
+		sp.whileHeld(new sP());
+		doortoggle.whenPressed(new DoorToggle());
 		//openClaw.whenPressed(new PnuematicsOpen());
 		//openClaw.whenReleased(new PneumaticsStop());
 		//closeClaw.whenPressed(new PneumaticsClose());
 		//closeClaw.whenReleased(new PneumaticsStop());
-		flopButton.whenPressed(new Flop());
-		flipButton.whenPressed(new Flip());
+		//flopButton.whenPressed(new Flop());
+		//flipButton.whenPressed(new Flip());
 		//reverseDrive.whenPressed(new direction_reverse());
 		//flopButton.whenReleased(new FlipFlopStop());
 		//flipButton.whenReleased(new FlipFlopStop());

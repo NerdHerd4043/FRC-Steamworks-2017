@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4043.robot.commands;
 
-import org.usfirst.frc.team4043.robot.OI;
 import org.usfirst.frc.team4043.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -8,30 +7,21 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class Climber extends Command {
+public class ClawMove extends Command {
 
-    public Climber() {
+    public ClawMove() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.winch);
+    	requires(Robot.grabberNabber);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.grabberNabber.MoveClaw();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	float axis = (float)OI.getCoStick().getRawAxis(5);
-    	if (axis > 0.02f){
-    		Robot.winch.start(axis);
-    	}
-    	else{
-    		if (axis < -0.02f) {
-    			Robot.winch.start(axis);
-    		}
-    		Robot.ballPickerUpper.stop();
-    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
