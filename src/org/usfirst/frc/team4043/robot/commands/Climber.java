@@ -14,6 +14,7 @@ public class Climber extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.winch);
+    	requires(Robot.grabberNabber);
     }
 
     // Called just before this Command runs the first time
@@ -25,6 +26,7 @@ public class Climber extends Command {
     	float axis = (float)OI.getCoStick().getRawAxis(5);
     	if (axis > 0.02f){
     		Robot.winch.start(axis);
+    		Robot.grabberNabber.RaiseArm();
     	}
     	else{
     		if (axis < -0.02f) {
