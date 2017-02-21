@@ -24,15 +24,15 @@ public class Climber extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	float axis = (float)OI.getCoStick().getRawAxis(5);
-    	if (axis > 0.02f){
+    	if (axis > 0.1f){
     		Robot.winch.start(axis);
     		Robot.grabberNabber.RaiseArm();
     	}
-    	else{
-    		if (axis < -0.02f) {
+    	else if (axis < -0.3f) {
     			Robot.winch.start(axis);
-    		}
-    		Robot.ballPickerUpper.stop();
+    	}
+    	else {
+    		Robot.winch.stop();
     	}
     }
 
