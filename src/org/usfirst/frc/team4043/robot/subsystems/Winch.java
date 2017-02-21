@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4043.robot.subsystems;
 
 import org.usfirst.frc.team4043.robot.RobotMap;
+import org.usfirst.frc.team4043.robot.commands.Climber;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -11,6 +12,7 @@ public class Winch extends Subsystem {
 	
 	protected void initDefaultCommand() {
 	//setDefaultCommand(new Winch());
+		setDefaultCommand(new Climber());
 	}
 	
 	private void setDefaultCommand(Winch winch) {
