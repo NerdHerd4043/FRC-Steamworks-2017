@@ -33,7 +33,7 @@ public class LowerArm extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.grabberNabber.StopArm();
+    	//Robot.grabberNabber.StopArm();
     }
 
     // Called when another command which requires one or more of the same

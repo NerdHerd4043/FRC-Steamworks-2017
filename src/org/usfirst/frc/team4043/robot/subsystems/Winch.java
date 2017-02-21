@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Winch extends Subsystem {
 	
 	protected void initDefaultCommand() {
-	setDefaultCommand(new Winch());
+	//setDefaultCommand(new Winch());
 	}
 	
 	private void setDefaultCommand(Winch winch) {
