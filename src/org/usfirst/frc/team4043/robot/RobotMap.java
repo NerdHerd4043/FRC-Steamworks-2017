@@ -7,6 +7,7 @@ import org.usfirst.frc.team4043.robot.commands.PneumaticsClose;
 import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -39,6 +40,8 @@ public class RobotMap {
 	public static CANTalon ballPickerUpper = new CANTalon(9);
 	
 	public static Compressor compressor = new Compressor(16);
+	
+	public static Servo servo = new Servo(5);
 	
 	public static void init() {
 		GrabberArm.reverseSensor(true);

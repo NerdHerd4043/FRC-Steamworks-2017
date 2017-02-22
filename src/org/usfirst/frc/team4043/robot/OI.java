@@ -66,6 +66,7 @@ public class OI {
 	Button clawButton = new JoystickButton(driveStick, 6);
 	Button raiseArm = new JoystickButton(driveStick, 4);
 	Button lowerArm = new JoystickButton(driveStick, 1);
+	Button Servo = new JoystickButton(driveStick, 5);
 	
 	//Button flopButton = new JoystickButton(coStick, 1);
 	//Button flipButton = new JoystickButton(coStick, 2);
