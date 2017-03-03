@@ -267,6 +267,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		
+		//current_ticks = 
+		SmartDashboard.putNumber("right encoder value", RobotMap.motorBR.getPulseWidthPosition());
+		SmartDashboard.putNumber("left encoder value", RobotMap.motorBL.getPulseWidthPosition());
 	}
 
 	/**

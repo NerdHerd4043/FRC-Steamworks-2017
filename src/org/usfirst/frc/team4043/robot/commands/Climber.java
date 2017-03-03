@@ -9,12 +9,12 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class Climber extends Command {
-
+	Command armUp;
     public Climber() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.winch);
-    	requires(Robot.grabberNabber);
+    	armUp = new RaiseArm();
     }
 
     // Called just before this Command runs the first time
@@ -26,7 +26,7 @@ public class Climber extends Command {
     	float axis = (float)OI.getCoStick().getRawAxis(5);
     	if (axis > 0.1f){
     		Robot.winch.start(axis);
-    		Robot.grabberNabber.RaiseArm();
+    		armUp.start();
     	}
     	else if (axis < -0.3f) {
     			Robot.winch.start(axis);
