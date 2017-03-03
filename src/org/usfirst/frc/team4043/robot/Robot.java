@@ -39,14 +39,14 @@ public class Robot extends IterativeRobot {
 	public static FlipFlop flipFlop;
 	public static BallBox ballbox;
 	
-	double kP = 1/15000;
-	double kI = 1/100000;
+	double kP = 1/3600;
+	double kD = 1/3600;
 	double error;
-	float p_out;
-	float i_out;
-	float output;
+	double p_out;
+	double d_out;
+	double output;
 	int current_ticks; //total ticks from the encoder
-	double integral_err;
+	double deriv_err;
 	int autoDistanceInt;
 	double target_ticks = autoDistanceInt;  //number of ticks to target location
 	double prev_err;
@@ -143,24 +143,19 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		//drive_to_distance(93.25); - This is 7ft 9.25in is inches, the distance to the baseline
 	}
 	
 	public double autonomous_PID() {
 		current_ticks = drivetrain.renc.getRaw();
 		error = target_ticks - current_ticks;
-		integral_err += error;
+		deriv_err = prev_err - error;
 		
-		if (integral_err > 900000) {
-			integral_err = 900000;
-		}
-		if (integral_err < -900000) {
-			integral_err = -900000;
-		}
 		
-		//p_out = error * kP;
-		//i_out = error * kI;
+		p_out = error * kP;
+		d_out = error * kD;
 		
-		output = p_out + i_out;
+		output = p_out + d_out;
 		
 		if (output > 1) {
 			output = 1;
@@ -246,6 +241,10 @@ public class Robot extends IterativeRobot {
 		}		
 	}
 
+	public double drive_to_distance(double inches){
+		target_ticks = inches / 28.26 * 3600;  // 3600 is the ticks per rotation 28.26 is the circumference of the wheels
+		return autonomous_PID();
+	}
 	
 	//
 	@Override
