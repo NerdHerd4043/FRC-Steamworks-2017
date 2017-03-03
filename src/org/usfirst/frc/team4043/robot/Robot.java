@@ -257,8 +257,8 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 		
-		current_ticks = drivetrain.renc.getRaw();
-		SmartDashboard.putNumber("encoder value", current_ticks);
+		//current_ticks = drivetrain.renc.getRaw();
+		//SmartDashboard.putNumber("encoder value", current_ticks);
 	}
 
 	/**
