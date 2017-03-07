@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4043.robot.subsystems.DuckPlucker;
 import org.usfirst.frc.team4043.robot.subsystems.FlipFlop;
+import org.usfirst.frc.team4043.robot.commands.DriveToDistance;
 import org.usfirst.frc.team4043.robot.commands.Flip;
 import org.usfirst.frc.team4043.robot.commands.Flop;
 import org.usfirst.frc.team4043.robot.commands.PneumaticsClose;
@@ -68,10 +69,10 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		
 		autoChooser = new SendableChooser <Command>();
-		autoChooser.addDefault("goStraight", new DriveToDistance());
-		autoChooser.addObject("Left side", new Leftside());
-		autoChooser.addObject("Right side" , new Rightside());
-		autoChooser.addObject("Center spike" , new Centerspike());
+		autoChooser.addDefault("goStraight", new DriveToDistance(36));
+		//autoChooser.addObject("Left side", new AutoL());
+//		autoChooser.addObject("Right side" , new AutoR());
+//		autoChooser.addObject("Center spike" , new AutoM());
 		autoChooser.addObject("Nothing" , null);
 		SmartDashboard.putData("Autonomous mode chooser" , autoChooser);
 
@@ -115,10 +116,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
 		
 		autonomousCommand = (Command) autoChooser.getSelected();
-		autonomousCommand.start();
+		drivetrain.gyroSPI.reset();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -131,8 +131,6 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 		
-		
-		drivetrain.gyroSPI.reset();
 	}
 
 	/**
