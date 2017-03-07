@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4043.robot.commands;
 
 import org.usfirst.frc.team4043.robot.Robot;
+import org.usfirst.frc.team4043.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -36,7 +37,7 @@ public class DriveToDistance extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	current_ticks = Robot.drivetrain.renc.getRaw();
+    	current_ticks = RobotMap.motorBR.getPulseWidthPosition();
     	error = target_ticks - current_ticks;
     	deriv_error = prev_error - error;
     	
@@ -45,11 +46,11 @@ public class DriveToDistance extends Command {
     	
     	output = p_out + d_out;
 		
-		if (output > 1) {
-			output = 1;
+		if (output > 0.6) {
+			output = 0.6;
 		}
-		if (output < -1) {
-			output = -1;
+		if (output < -0.6) {
+			output = -0.6;
 		}
 		
 		prev_error = error;

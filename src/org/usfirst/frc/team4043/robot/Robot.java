@@ -61,7 +61,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		// chooser.addObject("My Auto", new MyAutoCommand())
 		SmartDashboard.putData("Auto mode", chooser);
 		drivetrain = new DriveTrain();
 		winch = new Winch();
@@ -72,7 +72,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		
 		autoChooser = new SendableChooser <Command>();
-		autoChooser.addDefault("goStraight", new DriveToDistance(36));
+		autoChooser.addDefault("goStraight", new DriveToDistance(10));
 		autoChooser.addObject("Left side", new AutoL());
 		autoChooser.addObject("Right side" , new AutoR());
 		autoChooser.addObject("Center spike" , new AutoM());
@@ -240,7 +240,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		
 		//current_ticks = 
-		SmartDashboard.putNumber("right encoder value", RobotMap.motorBR.getPulseWidthPosition());
+		SmartDashboard.putNumber("right encoder value", 1.01d);
 		SmartDashboard.putNumber("left encoder value", RobotMap.motorBL.getPulseWidthPosition());
 	}
 
