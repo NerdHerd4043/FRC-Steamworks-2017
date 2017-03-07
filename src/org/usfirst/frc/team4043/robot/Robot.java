@@ -142,7 +142,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		//drive_to_distance(93.25); - This is 7ft 9.25in is inches, the distance to the baseline
+		drive_to_distance(93.25); //- This is 7ft 9.25in is inches, the distance to the baseline
 	}
 	
 	public double autonomous_PID() {
