@@ -17,6 +17,7 @@ public class DriveToDistance extends Command {
 	public double p_out;
 	public double d_out;
 	public double output;
+	boolean isfinished = false;
 	
 
     public DriveToDistance(double inches) {
@@ -30,6 +31,7 @@ public class DriveToDistance extends Command {
     protected void initialize() {
     	Robot.drivetrain.renc.reset();
     	Robot.drivetrain.lenc.reset();
+    	isfinished = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -53,11 +55,15 @@ public class DriveToDistance extends Command {
 		prev_error = error;
 		
 		Robot.drivetrain.drive.arcadeDrive(output, 0);
+		
+		if (error < 50) {
+			isfinished = true;
+		}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isfinished;
     }
 
     // Called once after isFinished returns true

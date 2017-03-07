@@ -39,17 +39,6 @@ public class Robot extends IterativeRobot {
 	public static FlipFlop flipFlop;
 	public static BallBox ballbox;
 	
-	double kP = 1/3600;
-	double kD = 1/3600;
-	double error;
-	double p_out;
-	double d_out;
-	double output;
-	int current_ticks; //total ticks from the encoder
-	double deriv_err;
-	int autoDistanceInt;
-	double target_ticks = autoDistanceInt;  //number of ticks to target location
-	double prev_err;
 	double gyroAngle;
 	double wanted_angle;
 	double AngleSpeed = -0.6d;
@@ -130,8 +119,6 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 		
-		String autoDistanceString = SmartDashboard.getString("DB/String 1", "myDefaultData");
-		autoDistanceInt = Integer.parseInt(autoDistanceString);
 		
 		drivetrain.gyroSPI.reset();
 	}
@@ -142,32 +129,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		drive_to_distance(93.25); //- This is 7ft 9.25in is inches, the distance to the baseline
 	}
 	
-	public double autonomous_PID() {
-		current_ticks = drivetrain.renc.getRaw();
-		error = target_ticks - current_ticks;
-		deriv_err = prev_err - error;
-		
-		
-		p_out = error * kP;
-		d_out = error * kD;
-		
-		output = p_out + d_out;
-		
-		if (output > 1) {
-			output = 1;
-		}
-		if (output < -1) {
-			output = -1;
-		}
-		
-		prev_err = error;
-		return output;
-		
-		//Hey peter
-	}
+
 	
 	public void auto2() {
 		gyroAngle = drivetrain.gyroSPI.getAngle();
@@ -240,10 +204,6 @@ public class Robot extends IterativeRobot {
 		}		
 	}
 
-	public double drive_to_distance(double inches){
-		target_ticks = inches / 28.26 * 3600;  // 3600 is the ticks per rotation 28.26 is the circumference of the wheels
-		return autonomous_PID();
-	}
 	
 	//
 	@Override
