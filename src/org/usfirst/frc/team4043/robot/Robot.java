@@ -13,6 +13,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4043.robot.subsystems.DuckPlucker;
 import org.usfirst.frc.team4043.robot.subsystems.FlipFlop;
+import org.usfirst.frc.team4043.robot.commands.AutoL;
+import org.usfirst.frc.team4043.robot.commands.AutoM;
+import org.usfirst.frc.team4043.robot.commands.AutoR;
 import org.usfirst.frc.team4043.robot.commands.DriveToDistance;
 import org.usfirst.frc.team4043.robot.commands.Flip;
 import org.usfirst.frc.team4043.robot.commands.Flop;
@@ -70,9 +73,9 @@ public class Robot extends IterativeRobot {
 		
 		autoChooser = new SendableChooser <Command>();
 		autoChooser.addDefault("goStraight", new DriveToDistance(36));
-		//autoChooser.addObject("Left side", new AutoL());
-//		autoChooser.addObject("Right side" , new AutoR());
-//		autoChooser.addObject("Center spike" , new AutoM());
+		autoChooser.addObject("Left side", new AutoL());
+		autoChooser.addObject("Right side" , new AutoR());
+		autoChooser.addObject("Center spike" , new AutoM());
 		autoChooser.addObject("Nothing" , null);
 		SmartDashboard.putData("Autonomous mode chooser" , autoChooser);
 
