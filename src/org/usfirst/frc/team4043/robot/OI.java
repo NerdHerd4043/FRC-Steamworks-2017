@@ -14,6 +14,7 @@ import org.usfirst.frc.team4043.robot.commands.LowerArm;
 import org.usfirst.frc.team4043.robot.commands.RaiseArm;
 import org.usfirst.frc.team4043.robot.commands.StopArm;
 import org.usfirst.frc.team4043.robot.commands.sP;
+import org.usfirst.frc.team4043.robot.commands.CameraFlip;
 //import org.usfirst.frc.team4043.robot.commands.BallPickerUpper;
 import org.usfirst.frc.team4043.robot.commands.ClawMove;
 import org.usfirst.frc.team4043.robot.commands.DoorToggle;
@@ -67,6 +68,7 @@ public class OI {
 	Button raiseArm = new JoystickButton(driveStick, 4);
 	Button lowerArm = new JoystickButton(driveStick, 1);
 	Button Servo = new JoystickButton(driveStick, 5);
+	Button cameraFlip = new JoystickButton(driveStick, 7);
 	
 	//Button flopButton = new JoystickButton(coStick, 1);
 	//Button flipButton = new JoystickButton(coStick, 2);
@@ -100,6 +102,7 @@ public class OI {
 		clawButton.whenPressed(new ClawMove());
 		sp.whileHeld(new sP());
 		doortoggle.whenPressed(new DoorToggle());
+		cameraFlip.whenPressed(new CameraFlip());
 		
 		
 		//openClaw.whenPressed(new PnuematicsOpen());

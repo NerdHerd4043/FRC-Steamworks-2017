@@ -77,15 +77,14 @@ public class Robot extends IterativeRobot {
 		ballbox = new BallBox();
 		oi = new OI();
 
-		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-		camera.setResolution(640, 480);
+		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture("Front", 0);
+		camera.setResolution(320, 240);
 		camera.setFPS(15);
 		
 		Servo exampleServo= new Servo(1);
 		exampleServo.set(.5);
 		exampleServo.setAngle(75);
 		
-
 	}
 
 	/**
