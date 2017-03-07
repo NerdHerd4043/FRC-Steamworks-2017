@@ -13,16 +13,17 @@ public class AutoTurning extends Command {
 	double wanted_angle;
 	double AngleSpeed = -0.6d;
 	public int Step;
-	public float targetAngle;
+	public double targetAngle;
 	String targetAnglestr;
 	public double angleMinSpeed;
 	double figuredSpeed = 0;
 	boolean isfinished = false;
 
-    public AutoTurning() {
+    public AutoTurning(double angle) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
+    	targetAngle = angle;
     }
 
     // Called just before this Command runs the first time
