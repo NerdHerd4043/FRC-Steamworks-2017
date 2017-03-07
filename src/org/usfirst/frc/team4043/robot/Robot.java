@@ -59,6 +59,7 @@ public class Robot extends IterativeRobot {
 	public double angleMinSpeed;
 
 	Command autonomousCommand;
+	SendableChooser autoChooser;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
@@ -76,6 +77,14 @@ public class Robot extends IterativeRobot {
 		ballPickerUpper = new DuckPlucker();
 		ballbox = new BallBox();
 		oi = new OI();
+		
+		autoChooser = new SendableChooser <Command>();
+		autoChooser.addDefault("goStraight", new DriveToDistance());
+		autoChooser.addObject("Left side", new Leftside());
+		autoChooser.addObject("Right side" , new Rightside());
+		autoChooser.addObject("Center spike" , new Centerspike());
+		autoChooser.addObject("Nothing" , null);
+		SmartDashboard.putData("Autonomous mode chooser" , autoChooser);
 
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture("Front", 0);
 		camera.setResolution(320, 240);
@@ -118,6 +127,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
+		
+		autonomousCommand = (Command) autoChooser.getSelected();
+		autonomousCommand.start();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
