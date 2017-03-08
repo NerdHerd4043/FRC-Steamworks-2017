@@ -241,7 +241,7 @@ public class Robot extends IterativeRobot {
 		
 		//current_ticks = 
 		SmartDashboard.putNumber("right encoder value", 1.01d);
-		SmartDashboard.putNumber("left encoder value", RobotMap.motorBL.getPulseWidthPosition());
+		SmartDashboard.putNumber("left encoder value", (double) RobotMap.motorBL.getPulseWidthPosition());
 	}
 
 	/**

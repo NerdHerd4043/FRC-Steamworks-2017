@@ -40,11 +40,11 @@ public class GrabberNabber extends Subsystem {
     //}
 	
 	public void RaiseArm() {
-		RobotMap.GrabberArm.set(0.5);
+		RobotMap.GrabberArm.set(0.4);
     }
 	
 	public void LowerArm() {
-		RobotMap.GrabberArm.set(-0.5);
+		RobotMap.GrabberArm.set(-0.3);
     }
 	
 	public void StopArm() {
