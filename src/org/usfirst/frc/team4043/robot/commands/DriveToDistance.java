@@ -37,7 +37,7 @@ public class DriveToDistance extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	current_ticks = RobotMap.motorBR.getPulseWidthPosition();
+    	current_ticks = RobotMap.motorBL.getPulseWidthPosition();
     	error = target_ticks - current_ticks;
     	deriv_error = prev_error - error;
     	

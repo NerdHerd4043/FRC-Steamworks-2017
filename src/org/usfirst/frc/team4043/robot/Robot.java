@@ -16,6 +16,7 @@ import org.usfirst.frc.team4043.robot.subsystems.FlipFlop;
 import org.usfirst.frc.team4043.robot.commands.AutoL;
 import org.usfirst.frc.team4043.robot.commands.AutoM;
 import org.usfirst.frc.team4043.robot.commands.AutoR;
+import org.usfirst.frc.team4043.robot.commands.DriveTimed;
 import org.usfirst.frc.team4043.robot.commands.DriveToDistance;
 import org.usfirst.frc.team4043.robot.commands.Flip;
 import org.usfirst.frc.team4043.robot.commands.Flop;
@@ -71,13 +72,14 @@ public class Robot extends IterativeRobot {
 		ballbox = new BallBox();
 		oi = new OI();
 		
-		autoChooser = new SendableChooser <Command>();
-		autoChooser.addDefault("goStraight", new DriveToDistance(10));
-		autoChooser.addObject("Left side", new AutoL());
-		autoChooser.addObject("Right side" , new AutoR());
-		autoChooser.addObject("Center spike" , new AutoM());
-		autoChooser.addObject("Nothing" , null);
-		SmartDashboard.putData("Autonomous mode chooser" , autoChooser);
+//		autoChooser = new SendableChooser <Command>();
+//		autoChooser.addObject("Timed Drive" , new DriveTimed(3000l));
+//		autoChooser.addDefault("goStraight", new DriveToDistance(10));
+//		autoChooser.addObject("Left side", new AutoL());
+//		autoChooser.addObject("Right side" , new AutoR());
+//		autoChooser.addObject("Center spike" , new AutoM());
+//		autoChooser.addObject("Nothing" , null);
+//		SmartDashboard.putData("Autonomous mode chooser" , autoChooser);
 
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture("Front", 0);
 		camera.setResolution(320, 240);
@@ -120,7 +122,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		
-		autonomousCommand = (Command) autoChooser.getSelected();
+		autonomousCommand = new DriveTimed(3000);//(Command) autoChooser.getSelected();
 		drivetrain.gyroSPI.reset();
 
 		/*
@@ -142,6 +144,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		
+		SmartDashboard.putNumber("Does it work?", 1.01d);
+		SmartDashboard.putNumber("right encoder value", (double) RobotMap.motorBR.getPulseWidthPosition());
+		SmartDashboard.putNumber("left encoder value", (double) RobotMap.motorBL.getPulseWidthPosition());
 	}
 	
 
@@ -240,7 +246,8 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		
 		//current_ticks = 
-		SmartDashboard.putNumber("right encoder value", 1.01d);
+		SmartDashboard.putNumber("Does it work?", 1.01d);
+		SmartDashboard.putNumber("right encoder value", (double) RobotMap.motorBR.getPulseWidthPosition());
 		SmartDashboard.putNumber("left encoder value", (double) RobotMap.motorBL.getPulseWidthPosition());
 	}
 
