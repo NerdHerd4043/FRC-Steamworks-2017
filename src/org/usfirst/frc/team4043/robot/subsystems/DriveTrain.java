@@ -59,9 +59,10 @@ public class DriveTrain extends Subsystem {
 	public double turnSlowThreshhold = 0.25d;
 	public double maxSpeedDuringManualTurn = -0.8f;
 	public boolean driveDirection = true;
+	public boolean TankDrive = false;
 	
 	public void drive(Joystick joy) {
-		if (SmartDashboard.getBoolean("DB/Button 0", false)) {
+		if (TankDrive) {
 			drive.tankDrive(joy.getRawAxis(1), joy.getRawAxis(5));
 			return;
 		}

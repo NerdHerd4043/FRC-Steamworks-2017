@@ -7,18 +7,18 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveTimed extends Command {
+public class Pause extends Command {
 
 	long startTime;
 	long endTime;
 	boolean isFinished = false;
 	
-    public DriveTimed(long time) {
+    public Pause(long time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
     	startTime = System.currentTimeMillis();
-    	endTime = startTime + 3000;
+    	endTime = startTime + time;
     	System.out.println("time" + time);
     	System.out.println("start" + startTime);
     	System.out.println("end" + endTime);
@@ -31,7 +31,6 @@ public class DriveTimed extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.drive.arcadeDrive(0.6, 0);
     	if (System.currentTimeMillis() > endTime) {
     		isFinished = true;
         }

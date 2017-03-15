@@ -64,10 +64,10 @@ public class OI {
 	//Button reverseWinch = new JoystickButton(coStick, 5);
 	//Button winchStop = new JoystickButton(coStick, 7);
 	
-	Button clawButton = new JoystickButton(driveStick, 6);
-	Button raiseArm = new JoystickButton(driveStick, 4);
-	Button lowerArm = new JoystickButton(driveStick, 1);
-	Button Servo = new JoystickButton(driveStick, 5);
+	Button clawButton = new JoystickButton(driveStick, 1);
+	Button raiseArm = new JoystickButton(driveStick, 5);
+	Button lowerArm = new JoystickButton(driveStick, 6);
+	//Button Servo = new JoystickButton(driveStick, 5);
 	Button cameraFlip = new JoystickButton(driveStick, 7);
 	
 	//Button flopButton = new JoystickButton(coStick, 1);

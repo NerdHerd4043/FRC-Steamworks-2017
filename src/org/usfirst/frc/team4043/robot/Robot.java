@@ -4,6 +4,7 @@ package org.usfirst.frc.team4043.robot;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -20,6 +21,7 @@ import org.usfirst.frc.team4043.robot.commands.DriveTimed;
 import org.usfirst.frc.team4043.robot.commands.DriveToDistance;
 import org.usfirst.frc.team4043.robot.commands.Flip;
 import org.usfirst.frc.team4043.robot.commands.Flop;
+import org.usfirst.frc.team4043.robot.commands.LetsBeStupid;
 import org.usfirst.frc.team4043.robot.commands.PneumaticsClose;
 import org.usfirst.frc.team4043.robot.subsystems.BallBox;
 import org.usfirst.frc.team4043.robot.subsystems.DriveTrain;
@@ -51,6 +53,7 @@ public class Robot extends IterativeRobot {
 	public float targetAngle;
 	String targetAnglestr;
 	public double angleMinSpeed;
+	Preferences prefs;
 
 	Command autonomousCommand;
 	SendableChooser autoChooser;
@@ -72,14 +75,16 @@ public class Robot extends IterativeRobot {
 		ballbox = new BallBox();
 		oi = new OI();
 		
-//		autoChooser = new SendableChooser <Command>();
-//		autoChooser.addObject("Timed Drive" , new DriveTimed(3000l));
-//		autoChooser.addDefault("goStraight", new DriveToDistance(10));
+		autoChooser = new SendableChooser <Command>();
+		autoChooser.addObject("Timed Drive" , new DriveTimed(3000l));
+		autoChooser.addDefault("Drop Gear", new LetsBeStupid(3000));
 //		autoChooser.addObject("Left side", new AutoL());
 //		autoChooser.addObject("Right side" , new AutoR());
 //		autoChooser.addObject("Center spike" , new AutoM());
 //		autoChooser.addObject("Nothing" , null);
 //		SmartDashboard.putData("Autonomous mode chooser" , autoChooser);
+		
+		drivetrain.TankDrive = Preferences.getInstance().getBoolean("TankDrive", false);
 
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture("Front", 0);
 		camera.setResolution(320, 240);
@@ -88,6 +93,7 @@ public class Robot extends IterativeRobot {
 		Servo exampleServo= new Servo(1);
 		exampleServo.set(.5);
 		exampleServo.setAngle(75);
+		
 		
 	}
 
@@ -105,6 +111,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void disabledPeriodic() {
+		drivetrain.TankDrive = Preferences.getInstance().getBoolean("Tankdrive", false);
 		Scheduler.getInstance().run();
 	}
 
@@ -122,9 +129,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		
-		autonomousCommand = new DriveTimed(3000);//(Command) autoChooser.getSelected();
+		autonomousCommand = new LetsBeStupid(3000);//(Command) autoChooser.getSelected();
 		drivetrain.gyroSPI.reset();
-
+		
+		//autonomousCommand = (Command) autoChooser.getSelected();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand

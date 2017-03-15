@@ -7,13 +7,15 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveTimed extends Command {
+public class LetsBeStupid extends Command {
 
 	long startTime;
 	long endTime;
 	boolean isFinished = false;
+	boolean clawOpened = false;
+	long reverseTime;
 	
-    public DriveTimed(long time) {
+    public LetsBeStupid(long time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
@@ -27,13 +29,24 @@ public class DriveTimed extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	clawOpened = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.drive.arcadeDrive(0.6, 0);
+    	if (System.currentTimeMillis() < endTime) {
+    		Robot.drivetrain.drive.arcadeDrive(0.6, 0);
+    	}
     	if (System.currentTimeMillis() > endTime) {
-    		isFinished = true;
+    		if (!clawOpened) {
+    			Robot.grabberNabber.OpenClaw();
+        		reverseTime = System.currentTimeMillis() + 1000;
+    			clawOpened = true;
+    		}
+    		Robot.drivetrain.drive.arcadeDrive(-0.6, 0.1);
+    		if (System.currentTimeMillis() > reverseTime){
+        		isFinished = true;
+    		}
         }
     }
 

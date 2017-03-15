@@ -24,6 +24,10 @@ public class AutoM extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new DriveToDistance(114));
+    	addSequential(new DriveTimed(3000),3);
+    	//addSequential(new Pause(500));
+    	addSequential(new ClawMove(),0.5);
+    	//addSequential(new Pause(500));
+    	addSequential(new ReverseDriveTimed(1000), 1);
     }
 }

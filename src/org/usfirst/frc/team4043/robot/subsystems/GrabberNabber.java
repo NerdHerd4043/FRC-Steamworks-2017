@@ -33,6 +33,7 @@ public class GrabberNabber extends Subsystem {
 	public void MoveClaw() {
 		grabbernabber.set(grabberState);
 		grabberState = !grabberState;
+		System.out.println("claw move " + grabberState);
 	}
 	
 	//public void StopClaw() {
