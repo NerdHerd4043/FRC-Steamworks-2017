@@ -6,9 +6,9 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 /**
  *
  */
-public class AutoL extends CommandGroup {
+public class NoDrop extends CommandGroup {
 
-    public AutoL() {
+    public NoDrop() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -26,17 +26,11 @@ public class AutoL extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-//    	addSequential(new DriveToDistance(114));     \
-//    	addSequential(new AutoTurning(30));           - This is all distance and turning that doesn't work
-//    	addSequential(new DriveToDistance(28.579));  /
-    	
     	addSequential(new DriveTimed(2500));
     	addSequential(new WaitCommand(.25));
     	addSequential(new TurnToAngle(30, .5));
     	addSequential(new WaitCommand(.25));
     	addSequential(new DriveTimed(627));
-    	addSequential(new WaitCommand(.25));
-    	addSequential(new ClawMove());
     	addSequential(new WaitCommand(.25));
     	addSequential(new ReverseDriveTimed(700));
     }
