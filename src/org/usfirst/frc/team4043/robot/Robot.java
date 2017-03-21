@@ -78,6 +78,8 @@ public class Robot extends IterativeRobot {
 		autoChooser = new SendableChooser <Command>();
 		autoChooser.addObject("Timed Drive" , new DriveTimed(3000l));
 		autoChooser.addDefault("Drop Gear", new LetsBeStupid(3000));
+		autoChooser.addObject("Not dropping the gear", NoDrop());
+		autoChooser.addObject("Just Turn", TurnAuto());
 //		autoChooser.addObject("Left side", new AutoL());
 //		autoChooser.addObject("Right side" , new AutoR());
 //		autoChooser.addObject("Center spike" , new AutoM());
@@ -95,6 +97,16 @@ public class Robot extends IterativeRobot {
 		exampleServo.setAngle(75);
 		
 		
+	}
+
+	private Object TurnAuto() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private Object NoDrop() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/**
