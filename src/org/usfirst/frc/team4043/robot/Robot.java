@@ -23,6 +23,8 @@ import org.usfirst.frc.team4043.robot.commands.Flip;
 import org.usfirst.frc.team4043.robot.commands.Flop;
 import org.usfirst.frc.team4043.robot.commands.LetsBeStupid;
 import org.usfirst.frc.team4043.robot.commands.PneumaticsClose;
+import org.usfirst.frc.team4043.robot.commands.ServoMove;
+import org.usfirst.frc.team4043.robot.commands.ServoSweep;
 import org.usfirst.frc.team4043.robot.subsystems.BallBox;
 import org.usfirst.frc.team4043.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4043.robot.subsystems.GrabberNabber;
@@ -90,11 +92,7 @@ public class Robot extends IterativeRobot {
 		camera.setResolution(320, 240);
 		camera.setFPS(15);
 		
-		Servo exampleServo= new Servo(1);
-		exampleServo.set(.5);
-		exampleServo.setAngle(75);
-		
-		
+		new ServoSweep();
 	}
 
 	/**
