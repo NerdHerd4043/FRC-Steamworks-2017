@@ -129,7 +129,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		
-		autonomousCommand = new LetsBeStupid(3000);//(Command) autoChooser.getSelected();
+		autonomousCommand = new AutoM();//(Command) autoChooser.getSelected();
 		drivetrain.gyroSPI.reset();
 		
 		//autonomousCommand = (Command) autoChooser.getSelected();
@@ -255,8 +255,8 @@ public class Robot extends IterativeRobot {
 		
 		//current_ticks = 
 		SmartDashboard.putNumber("Does it work?", 1.01d);
-		SmartDashboard.putNumber("right encoder value", (double) RobotMap.motorBR.getPulseWidthPosition());
-		SmartDashboard.putNumber("left encoder value", (double) RobotMap.motorBL.getPulseWidthPosition());
+		SmartDashboard.putNumber("right encoder value", (double) RobotMap.motorBR.getAnalogInRaw());
+		SmartDashboard.putNumber("left encoder value", (double) RobotMap.motorBL.getAnalogInRaw());
 	}
 
 	/**
