@@ -81,8 +81,8 @@ public class Robot extends IterativeRobot {
 //		autoChooser.addObject("Left side", new AutoL());
 //		autoChooser.addObject("Right side" , new AutoR());
 //		autoChooser.addObject("Center spike" , new AutoM());
-//		autoChooser.addObject("Nothing" , null);
-//		SmartDashboard.putData("Autonomous mode chooser" , autoChooser);
+		autoChooser.addObject("Nothing" , null);
+		SmartDashboard.putData("Autonomous mode chooser" , autoChooser);
 		
 		drivetrain.TankDrive = Preferences.getInstance().getBoolean("TankDrive", false);
 
