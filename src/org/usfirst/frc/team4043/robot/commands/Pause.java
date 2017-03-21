@@ -12,21 +12,23 @@ public class Pause extends Command {
 	long startTime;
 	long endTime;
 	boolean isFinished = false;
+	long waitTime;
 	
     public Pause(long time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
-    	startTime = System.currentTimeMillis();
-    	endTime = startTime + time;
-    	System.out.println("time" + time);
-    	System.out.println("start" + startTime);
-    	System.out.println("end" + endTime);
+    	waitTime = time;
 
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	startTime = System.currentTimeMillis();
+    	endTime = startTime + waitTime;
+    	System.out.println("time" + waitTime);
+    	System.out.println("start" + startTime);
+    	System.out.println("end" + endTime);
     }
 
     // Called repeatedly when this Command is scheduled to run

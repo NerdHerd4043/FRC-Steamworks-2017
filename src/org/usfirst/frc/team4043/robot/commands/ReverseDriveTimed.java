@@ -12,21 +12,22 @@ public class ReverseDriveTimed extends Command {
 	long startTime;
 	long endTime;
 	boolean isFinished = false;
+	long driveTime;
 	
     public ReverseDriveTimed(long time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
-    	startTime = System.currentTimeMillis();
-    	endTime = startTime + time;
-    	System.out.println("time" + time);
-    	System.out.println("start" + startTime);
-    	System.out.println("end" + endTime);
-
+    	driveTime = time;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	startTime = System.currentTimeMillis();
+    	endTime = startTime + driveTime;
+    	System.out.println("time" + driveTime);
+    	System.out.println("start" + startTime);
+    	System.out.println("end" + endTime);
     }
 
     // Called repeatedly when this Command is scheduled to run

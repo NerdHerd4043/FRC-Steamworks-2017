@@ -12,26 +12,28 @@ public class DriveTimed extends Command {
 	long startTime;
 	long endTime;
 	boolean isFinished = false;
+	long driveTime;
 	
     public DriveTimed(long time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
-    	startTime = System.currentTimeMillis();
-    	endTime = startTime + 3000;
-    	System.out.println("time" + time);
-    	System.out.println("start" + startTime);
-    	System.out.println("end" + endTime);
-
+    	driveTime = time;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	startTime = System.currentTimeMillis();
+    	endTime = startTime + driveTime;
+    	System.out.println("time" + driveTime);
+    	System.out.println("start" + startTime);
+    	System.out.println("end" + endTime);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.drive.arcadeDrive(0.6, 0);
+    	double angle = Robot.drivetrain.gyroSPI.getAngle();
+    	Robot.drivetrain.drive.arcadeDrive(0.6, -angle*.03d); //.03 is a conversion factor
     	if (System.currentTimeMillis() > endTime) {
     		isFinished = true;
         }
