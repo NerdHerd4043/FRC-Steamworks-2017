@@ -24,8 +24,6 @@ public class DriveTrain extends Subsystem {
 	public AnalogInput frontRangeFinder;
 	
 	public ADXRS450_Gyro gyroSPI;
-	public Encoder renc;
-	public Encoder lenc;
 	public DriveTrain() {
 		super();
 		//TODO: Double check this, are the motors going in the correct spots? Hover over drive base to see where they should go.
@@ -33,8 +31,9 @@ public class DriveTrain extends Subsystem {
 		drive = new RobotDrive(RobotMap.motorFL, RobotMap.motorBL, RobotMap.motorFR, RobotMap.motorBR);
 		gyroSPI = new ADXRS450_Gyro();
 		gyroSPI.calibrate();
-		renc = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-		lenc = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
+		RobotMap.motorBL.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		RobotMap.motorBR.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		
 	}
 
     // Put methods for controlling this subsystem

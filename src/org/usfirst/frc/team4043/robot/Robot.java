@@ -17,12 +17,14 @@ import org.usfirst.frc.team4043.robot.subsystems.FlipFlop;
 import org.usfirst.frc.team4043.robot.commands.AutoL;
 import org.usfirst.frc.team4043.robot.commands.AutoM;
 import org.usfirst.frc.team4043.robot.commands.AutoR;
+import org.usfirst.frc.team4043.robot.commands.TurnAuto;
 import org.usfirst.frc.team4043.robot.commands.DriveTimed;
 import org.usfirst.frc.team4043.robot.commands.DriveToDistance;
 import org.usfirst.frc.team4043.robot.commands.Flip;
 import org.usfirst.frc.team4043.robot.commands.Flop;
 import org.usfirst.frc.team4043.robot.commands.LetsBeStupid;
 import org.usfirst.frc.team4043.robot.commands.PneumaticsClose;
+import org.usfirst.frc.team4043.robot.commands.NoDrop;
 import org.usfirst.frc.team4043.robot.subsystems.BallBox;
 import org.usfirst.frc.team4043.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4043.robot.subsystems.GrabberNabber;
@@ -77,16 +79,16 @@ public class Robot extends IterativeRobot {
 		
 		autoChooser = new SendableChooser <Command>();
 		autoChooser.addObject("Timed Drive" , new DriveTimed(3000l));
-		autoChooser.addDefault("Drop Gear", new LetsBeStupid(3000));
-		autoChooser.addObject("Not dropping the gear", NoDrop());
-		autoChooser.addObject("Just Turn", TurnAuto());
+		autoChooser.addDefault("Wilsonville", new LetsBeStupid(3000));
+		autoChooser.addObject("Not dropping the gear", new NoDrop());
+		autoChooser.addObject("Just Turn", new TurnAuto());
 //		autoChooser.addObject("Left side", new AutoL());
 //		autoChooser.addObject("Right side" , new AutoR());
-//		autoChooser.addObject("Center spike" , new AutoM());
+		autoChooser.addObject("Center spike" , new AutoM());
 		autoChooser.addObject("Nothing" , null);
 		SmartDashboard.putData("Autonomous mode chooser" , autoChooser);
 		
-		drivetrain.TankDrive = Preferences.getInstance().getBoolean("TankDrive", false);
+		drivetrain.TankDrive = Preferences.getInstance().getBoolean("Tankdrive", false);
 
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture("Front", 0);
 		camera.setResolution(320, 240);
