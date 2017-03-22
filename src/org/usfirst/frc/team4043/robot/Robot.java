@@ -81,7 +81,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Timed Drive" , new DriveTimed(3000l));
 		autoChooser.addDefault("Wilsonville", new LetsBeStupid(3000));
 		autoChooser.addObject("Not dropping the gear", new NoDrop());
-		autoChooser.addObject("Just Turn", new TurnAuto());
+		//autoChooser.addObject("Just Turn", new TurnAuto());
 //		autoChooser.addObject("Left side", new AutoL());
 //		autoChooser.addObject("Right side" , new AutoR());
 		autoChooser.addObject("Center spike" , new AutoM());
