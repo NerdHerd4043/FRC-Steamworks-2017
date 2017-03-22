@@ -15,7 +15,10 @@ public class GrabberNabber extends Subsystem {
     // here. Call these from Commands.
 	
 	Solenoid grabbernabber = new Solenoid(16, 3);
+	Solenoid kicker = new Solenoid(16,4);
 	public boolean grabberState = true;
+    public boolean kickerState = true;
+	
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -51,5 +54,11 @@ public class GrabberNabber extends Subsystem {
 	public void StopArm() {
 		RobotMap.GrabberArm.set(0);
     }
+	
+    public void KickerMove() {
+        kicker.set(kickerState);
+        kickerState = !kickerState;
+    }
+
 }
 
