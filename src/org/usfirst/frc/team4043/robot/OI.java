@@ -23,6 +23,7 @@ import org.usfirst.frc.team4043.robot.commands.FloorUp;
 //import org.usfirst.frc.team4043.robot.commands.Flip;
 //import org.usfirst.frc.team4043.robot.commands.FlipFlopStop;
 //import org.usfirst.frc.team4043.robot.commands.Flop;
+import org.usfirst.frc.team4043.robot.commands.KickerMove;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -57,7 +58,7 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
-	Joystick driveStick = new Joystick(0);
+	public Joystick driveStick = new Joystick(0);
 	static Joystick coStick = new Joystick(1);
 	
 	//Button winchButton = new JoystickButton(coStick, 6);
@@ -69,6 +70,7 @@ public class OI {
 	Button lowerArm = new JoystickButton(driveStick, 6);
 	//Button Servo = new JoystickButton(driveStick, 5);
 	Button cameraFlip = new JoystickButton(driveStick, 7);
+	Button kicker = new JoystickButton(driveStick, 4);
 	
 	//Button flopButton = new JoystickButton(coStick, 1);
 	//Button flipButton = new JoystickButton(coStick, 2);
@@ -96,6 +98,7 @@ public class OI {
 		raiseArm.whenReleased(new StopArm());
 		lowerArm.whenPressed(new LowerArm());
 		lowerArm.whenReleased(new StopArm());
+		kicker.whenPressed(new KickerMove());
 		
 		floorUp.whenPressed(new FloorUp());
 		floorDown.whenPressed(new FloorDown());

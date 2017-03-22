@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4043.robot.subsystems;
 
+import org.usfirst.frc.team4043.robot.Robot;
 import org.usfirst.frc.team4043.robot.RobotMap;
 import org.usfirst.frc.team4043.robot.commands.TankDrive;
 
@@ -40,7 +41,12 @@ public class DriveTrain extends Subsystem {
     // here. Call these from Commands.
 	
 	public void drive(double throttle, double turn) {
-			drive.arcadeDrive(throttle, turn);
+        if (Robot.oi.driveStick.getRawAxis(2) > .5d) {
+        		drive.arcadeDrive(throttle, turn);
+        }
+        else {
+            drive.arcadeDrive(throttle, turn);
+        }
 	}
 	
 	public float maxSpeed = -1;
