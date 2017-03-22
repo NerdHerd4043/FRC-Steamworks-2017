@@ -33,7 +33,10 @@ public class DriveTimed extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double angle = Robot.drivetrain.gyroSPI.getAngle();
-    	Robot.drivetrain.drive.arcadeDrive(0.6, -angle*.03d); //.03 is a conversion factor
+    	//TODO: robot turned the wrong direction, I removed the - before angle so it should be 
+    	//correct now, just needs re-testing.
+    	//Robot.drivetrain.drive.arcadeDrive(0.6, angle*.03d); //.03 is a conversion factor
+    	Robot.drivetrain.drive.arcadeDrive(0.6, 0);
     	if (System.currentTimeMillis() > endTime) {
     		isFinished = true;
         }
