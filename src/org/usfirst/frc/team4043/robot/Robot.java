@@ -79,12 +79,12 @@ public class Robot extends IterativeRobot {
 		
 		autoChooser = new SendableChooser <Command>();
 		autoChooser.addObject("Timed Drive" , new DriveTimed(3000l));
-		autoChooser.addDefault("Wilsonville", new LetsBeStupid(3000));
+		autoChooser.addObject("Wilsonville", new LetsBeStupid(3000));
 		autoChooser.addObject("Not dropping the gear", new NoDrop());
 		//autoChooser.addObject("Just Turn", new TurnAuto());
 //		autoChooser.addObject("Left side", new AutoL());
 //		autoChooser.addObject("Right side" , new AutoR());
-		autoChooser.addObject("Center spike" , new AutoM());
+		autoChooser.addDefault("Auto Middle" , new AutoM());
 		autoChooser.addObject("Nothing" , null);
 		SmartDashboard.putData("Autonomous mode chooser" , autoChooser);
 		
@@ -143,10 +143,12 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		
-		autonomousCommand = new AutoM();//(Command) autoChooser.getSelected();
+		
+		
+		//autonomousCommand = new AutoM();//(Command) autoChooser.getSelected();
 		drivetrain.gyroSPI.reset();
 		
-		//autonomousCommand = (Command) autoChooser.getSelected();
+		autonomousCommand = (Command) autoChooser.getSelected();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
