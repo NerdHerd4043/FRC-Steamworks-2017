@@ -170,8 +170,8 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		
 		SmartDashboard.putNumber("Does it work?", 1.01d);
-		SmartDashboard.putNumber("right encoder value", (double) RobotMap.motorBR.getPulseWidthPosition());
-		SmartDashboard.putNumber("left encoder value", (double) RobotMap.motorBL.getPulseWidthPosition());
+		SmartDashboard.putNumber("right encoder value", (double) RobotMap.motorBR.getEncPosition());
+		SmartDashboard.putNumber("left encoder value", (double) RobotMap.motorBL.getEncPosition());
 	}
 	
 
